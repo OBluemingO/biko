@@ -12,6 +12,16 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      textColor: {
+        body: '#bbbbbb'
+      },
+      backgroundImage: {
+        'hero-section': "url('../public/images/hero-section.png')",
+        'biko-section': "url('../public/images/biko.png')",
+        'biko-a': "url('../public/images/biko_a.png')",
+        'biko-b': "url('../public/images/biko_b.png')",
+        'biko-c': "url('../public/images/biko_c.png')",
+      }
     },
   },
   plugins: [],
