@@ -1,5 +1,6 @@
 import SectionAbout from "./(sections)/section_about";
 import SectionDetail from "./(sections)/section_detail";
+import SectionFaq from "./(sections)/section_faq";
 import SectionHero from "./(sections)/section_hero"
 import SectionImage from "./(sections)/section_image";
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <SectionAbout />
       <SectionDetail />
       <SectionImage />
+      <SectionFaq />
     </main>
   );
 }
