@@ -8,43 +8,30 @@ const Footerbar: React.FC = () => {
     const [show, setShow] = useState(false);
     const [showFooterBar, setShowFooterBar] = useState(false)
     const [currentHover, setCurrentHover] = useState(0)
+
     const { scrollYProgress } = useScroll();
-    const menuRef = useRef<(HTMLDivElement | null)[]>([])
 
     useMotionValueEvent(scrollYProgress, "change", (latest) => {
-        const percentScrollY = latest * 100;
-        if (percentScrollY >= 2) return setShow(true)
-        
-        return setShow(false)
-    });
-    // ? note: example seque animation
-  //   useEffect(() => {
-  //    if (isPresent) {
-  //      const enterAnimation = async () => {
-  //        await animate(scope.current, { opacity: 1 })
-  //        await animate("li", { opacity: 1, x: 0 })
-  //      }
-  //      enterAnimation()
+      const percentScrollY = latest * 100;
+      if (percentScrollY >= 2) return setShow(true);
 
-  //    } else {
-  //      const exitAnimation = async () => {
-  //        await animate("li", { opacity: 0, x: -100 })
-  //        await animate(scope.current, { opacity: 0 })
-  //        safeToRemove()
-  //      }
-       
-  //      exitAnimation()
-  //    }
-  // }, [isPresent])
+      setShow(false);
+      setShowFooterBar(false);
+    });
+
+    const variants = {
+      hidden: { scale:0, y:[0, 50, 0] },
+      animate: { scale: [0,0.5,1], y: [0, 50, 0] },
+    }
 
     return (
       <>
         <motion.div
           initial={{ scale: 0 }}
-          animate={{ scale: show ? 1 : 0 }}
-          transition={{ type: "spring" }}
+          animate={{ scale: show ? [0,1,1.2,1] : 0 }}
+          transition={ show ? { type: 'spring' } : {ease: 'easeOut'}}
           className={clsx(
-            "grid place-items-center fixed h-[80px] bottom-[30px] w-[80px] mix-blend-difference right-[3%] z-[200] cursor-pointer bg-white rounded-full"
+            "grid select-none place-items-center fixed h-[80px] bottom-[30px] w-[80px] mix-blend-difference right-[3%] z-[200] cursor-pointer bg-white rounded-full"
           )}
           onClick={() => setShowFooterBar((prev) => !prev)}
         >
@@ -53,9 +40,18 @@ const Footerbar: React.FC = () => {
             color="white"
           />
         </motion.div>
-        <motion.div className="fixed z-[199] flex justify-center items-center bottom-0 bg-green-200 w-full h-[140px]">
+        <motion.div
+          variants={variants}
+          initial="hidden"
+          animate={showFooterBar ? "animate" : "hidden"}
+          transition={{ease: 'easeOut'}}
+          className="fixed z-[199] flex justify-center items-center bottom-0 bg-transparent w-full h-[140px]"
+        >
           <div className=" text-center relative border-2 flex text-white uppercase overflow-hidden items-center rounded-full border-white  w-[calc(100vw-30%)] h-[80px] transition-all bg-[#141415]">
-            <div className="w-1/4 cursor-pointer" onMouseOver={() => setCurrentHover(0)}>
+            <div
+              className="w-1/4 cursor-pointer"
+              onMouseOver={() => setCurrentHover(0)}
+            >
               Home
             </div>
             <div

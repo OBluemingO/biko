@@ -2,6 +2,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import Footerbar from '@/components/Footerbar'
+import ImageTrackingCursor from '@/components/ImageTrackingCursor'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,7 +21,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <Navbar />
         <Footerbar />
-        {children}</body>
+        {/* <ImageTrackingCursor /> */}
+        {children}
+        </body>
     </html>
   )
 }
