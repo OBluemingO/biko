@@ -1,6 +1,6 @@
-import ButtonGray from '@/components/buttons/button'
-import Card from '@/components/cards/card';
-import React from 'react'
+import ButtonGray from "@/components/buttons/button";
+import Card from "@/components/cards/card";
+import React from "react";
 
 const SectionAbout = () => {
   const content = {
@@ -10,14 +10,12 @@ const SectionAbout = () => {
     image: "lorem lorem lorem lorem lorelm",
   };
 
- const contentMain = {
+  const contentMain = {
     rate: 4,
     name: "phayuphat trilao",
     body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem aspernatur enim velit quod tempora iure! Quidem expedita praesentium libero ab.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem aspernatur enim velit quod tempora iure! Quidem expedita praesentium libero ab.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem aspernatur enim velit quod tempora iure! Quidem expedita praesentium libero ab.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem aspernatur enim velit quod tempora iure! Quidem expedita praesentium libero ab.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem aspernatur enim velit quod tempora iure! Quidem expedita praesentium libero ab.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem aspernatur enim velit quod tempora iure! Quidem expedita praesentium libero ab.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem aspernatur enim velit quod tempora iure! Quidem expedita praesentium libero ab.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem aspernatur enim velit quod tempora.",
     image: "lorem lorem lorem lorem lorelm",
   };
-
-
 
   return (
     <>
@@ -61,6 +59,6 @@ const SectionAbout = () => {
       </div>
     </>
   );
-}
+};
 
-export default SectionAbout 
+export default SectionAbout;

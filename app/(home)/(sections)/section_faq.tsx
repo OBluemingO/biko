@@ -61,7 +61,7 @@ const SectionFaq = () => {
           </motion.div>
           <motion.div
             onMouseOver={() => handleOnMouseOver(2)}
-            className="flex border-t-[1px] items-center justify-between py-8"
+            className="flex border-t-[1px] border-b-[1px] items-center justify-between py-8"
           >
             <div className="flex flex-col gap-5">
               <Biko />
