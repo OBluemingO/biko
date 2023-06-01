@@ -23,7 +23,7 @@ export default function RootLayout({
         <MenuBar  />
         {/* <ImageTrackingCursor /> */}
         {children}
-        {/* <Footerbar /> */}
+        <Footerbar />
         </body>
     </html>
   )
