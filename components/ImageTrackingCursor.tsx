@@ -28,7 +28,7 @@ const ImageTrackingCursor: React.FC<IProps> = ({
     <>
       <motion.div
         ref={(el) => (cursorRef.current = el)}
-        className=" overflow-hidden w-[250px] h-[250px] pointer-events-none bg-black fixed select-none"
+        className=" hidden lg:block overflow-hidden w-[250px] h-[250px] pointer-events-none bg-black fixed select-none"
         initial={{ scale: 0 }}
         animate={{ x, y, scale: show ? 1 : 0 }}
         transition={{ ease: "easeOut", scale: { delay: show ? 0 : 0.5 } }}
@@ -38,7 +38,7 @@ const ImageTrackingCursor: React.FC<IProps> = ({
         <div className="h-full w-full bg-black"></div>
       </motion.div>
       <motion.div
-        className="pointer-events-none fixed w-[100px] h-[50px] bg-white rounded-full grid place-items-center"
+        className="hidden lg:grid pointer-events-none fixed w-[100px] h-[50px] bg-white rounded-full place-items-center"
         ref={(el) => (clickCurSorRef.current = el)}
         initial={{ scale: 0 }}
         animate={{ x:X, y:Y, scale: show ? 1 : 0 }}

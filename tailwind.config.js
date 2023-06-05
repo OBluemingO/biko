@@ -8,7 +8,8 @@ module.exports = {
   theme: {
     extend: {
       fontSize:{
-        ['header']: 'clamp(1rem,10vw,6rem)',
+        header: 'clamp(1rem,10vw,6rem)',
+        detailBody: 'clamp(0.75rem,0.85vw,1.5rem)'
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -24,6 +25,7 @@ module.exports = {
         'biko-a': "url('../public/images/biko_a.png')",
         'biko-b': "url('../public/images/biko_b.png')",
         'biko-c': "url('../public/images/biko_c.png')",
+        'biko-d': "url('../public/images/biko_d.jpg')",
       }
     },
   },

@@ -1,12 +1,20 @@
 "use client"
-import {motion} from 'framer-motion'
+import { motion } from "framer-motion";
 import SectionAbout from "./(sections)/section_about";
 import SectionContact from "./(sections)/section_contact";
 import SectionDetail from "./(sections)/section_detail";
 import SectionFaq from "./(sections)/section_faq";
-import SectionHero from "./(sections)/section_hero"
+import SectionHero from "./(sections)/section_hero";
 import SectionImage from "./(sections)/section_image";
-import { PageWrapper } from '@/components/WraperPage';
+import {
+  LoginButton,
+  LogoutButton,
+  ProfileButton,
+  RegisterButton,
+} from "@/components/buttons/button.auth";
+import { PageWrapper } from "@/components/WraperPage";
+import { usePathname } from "next/navigation";
+// import { PageWrapper } from "@/components/WraperPage";
 
 // ? NOTE: data fetch in server component
 // async function getData() {
@@ -20,19 +28,19 @@ import { PageWrapper } from '@/components/WraperPage';
 //   return data
 // }
 
-export default async function Home() {
-  // const data = await getData()
+export default function Home() {
 
+  const pathname = usePathname()
   return (
-      <PageWrapper>
-          <motion.main initial={{left: '100%'}} animate={{left:'0%'}} className="w-full overflow-x-hidden">
-              <SectionHero />
-              <SectionAbout />
-              <SectionDetail />
-              <SectionImage />
-              <SectionFaq />
-              <SectionContact />
-          </motion.main>
-      </PageWrapper>
+      <motion.main
+        className="w-full overflow-x-hidden"
+      >
+        <SectionHero />
+        <SectionAbout />
+        <SectionDetail />
+        <SectionImage />
+        <SectionFaq />
+        <SectionContact />
+      </motion.main>
   );
 }

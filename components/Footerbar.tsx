@@ -6,7 +6,7 @@ const Footerbar = () => {
       <div className="mx-auto w-[90%] h-[1px] bg-white mt-[15px]"></div>
       <div className="w-full h-[1px] bg-white mt-[15px]"></div>
       <div className="flex items-center flex-col gap-5 w-full h-[150px] mt-[30px]">
-        <div className="flex gap-10">
+        <div className="flex gap-5 lg:gap-10">
           <div className="w-[75px] h-[75px] bg-white rounded-full"></div>
           <div className="w-[75px] h-[75px] bg-white rounded-full"></div>
           <div className="w-[75px] h-[75px] bg-white rounded-full"></div>

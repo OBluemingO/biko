@@ -1,24 +1,20 @@
-"use client"
-import { PageWrapper } from '@/components/WraperPage';
-import { motion } from 'framer-motion';
+"use client";
+import { PageWrapper } from "@/components/WraperPage";
+import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
-interface IProps {
-
-}
+interface IProps {}
 
 const AboutUs: React.FC<IProps> = ({}: IProps): JSX.Element => {
-    return (
-        <PageWrapper>
-            <motion.div
-                initial={{ left: "100%" }}
-                animate={{ left: "0%" }}
-                exit={{ left: "0%" }}
-                className="h-screen w-full bg-black"
-            >
-                about us test
-            </motion.div>
-        </PageWrapper>
-    );
+  const pathname = usePathname();
+
+  return (
+    <motion.main
+      className="h-screen w-full bg-black pt-96 text-white"
+    >
+      about us test
+    </motion.main>
+  );
 };
 
 export default AboutUs;

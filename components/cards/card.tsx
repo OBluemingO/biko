@@ -17,7 +17,7 @@ const Card: React.FC<Props> = ({ rate, body, name, image }: Props) => {
           <div className="rate flex items-center">{Array(rate).fill(0).map(( el,idx ) => <AiFillStar color='yellow' key={`star-${idx}`}/>)}<p className="px-2">{rate}</p></div>
         </div>
       </div>
-      <div className="body text-body">{body}</div>
+      <div className="body text-body pb-[50px] lg:pb-0">{body}</div>
       <div className="footer absolute bottom-[30px] left-[30px] flex gap-2">
         <div className="avatar rounded-full w-[35px] h-[35px] bg-white "></div>
         <div className="avatar rounded-full w-[35px] h-[35px] bg-white "></div>
