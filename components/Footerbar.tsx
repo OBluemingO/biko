@@ -1,4 +1,4 @@
-const Footerbar = () => {
+const FooterBar = () => {
   return (
     <div className="bg-black w-full px-[3%] mx-auto">
       <div className="w-[75px] h-[75px] mx-auto bg-white rounded-full"></div>
@@ -20,4 +20,4 @@ const Footerbar = () => {
   );
 }
 
-export default Footerbar
+export default FooterBar
