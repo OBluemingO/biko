@@ -3,9 +3,7 @@ import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import MenuBar from "@/components/MenuBar";
 import Footerbar from "@/components/FooterBar";
-import { AnimatePresence } from "framer-motion";
 import AuthModal from "@/components/modals/Auth.component";
-import { PageWrapper } from "@/components/WraperPage";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <MenuBar />
         <AuthModal />
-        <AnimatePresence mode='wait'>{children}</AnimatePresence>
+        {children}
         <Footerbar />
       </body>
     </html>
