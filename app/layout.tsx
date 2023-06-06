@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import MenuBar from "@/components/MenuBar";
 import AuthModal from "@/components/modals/Auth.component";
-import FooterBar from "@/components/FooterBar";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <MenuBar />
         <AuthModal />
         {children}
-        <FooterBar />
+        <Footer />
       </body>
     </html>
   );
