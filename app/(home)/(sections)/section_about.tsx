@@ -7,14 +7,14 @@ const SectionAbout = () => {
     rate: 4,
     name: "phayuphat trilao",
     body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem aspernatur enim velit quod tempora iure! Quidem expedita praesentium libero ab.",
-    image: "lorem lorem lorem lorem lorelm",
+    image: "https://mystiquemedicalspa.com/wp-content/uploads/2014/11/bigstock-159411362-Copy.jpg",
   };
 
   const contentMain = {
     rate: 4,
     name: "phayuphat trilao",
     body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem aspernatur enim velit quod tempora iure! Quidem expedita praesentium libero ab.Lorem ipsum dolor sit amet,",
-    image: "lorem lorem lorem lorem lorelm",
+    image: "https://mystiquemedicalspa.com/wp-content/uploads/2014/11/bigstock-159411362-Copy.jpg",
   };
 
   return (
@@ -28,7 +28,7 @@ const SectionAbout = () => {
             error eligendi iste, dicta a! Ducimus ab recusandae repellendus est
             quis, mollitia ad?
           </p>
-          <div className="w-[338px]">
+          <div className="max-w-[338px]">
             <ButtonGray>DISCOVER THE BENEFITS</ButtonGray>
           </div>
         </div>

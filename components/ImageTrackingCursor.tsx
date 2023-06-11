@@ -1,7 +1,9 @@
 "use client"
 import { useFollowPointer } from "@/hooks/useFollowPointer";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useEffect , useRef } from "react";
+import ImageBiko from '../public/images/man-biko.jpg'
 
 interface IProps {
   show: boolean;
@@ -35,7 +37,7 @@ const ImageTrackingCursor: React.FC<IProps> = ({
       >
         <div className="h-full w-full bg-green-200"></div>
         <div className="h-full w-full bg-red-200"></div>
-        <div className="h-full w-full bg-black"></div>
+        <div className="h-full w-full relative overflow-hidden grayscale"><Image className="absolute" fill alt="biko-man" src={ImageBiko} /></div>
       </motion.div>
       <motion.div
         className="hidden lg:grid pointer-events-none fixed w-[100px] h-[50px] bg-white rounded-full place-items-center"

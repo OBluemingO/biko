@@ -1,6 +1,6 @@
 const SectionDetail = () => {
   return (
-    <div className="w-full h-[754px] my-[150px] px-[3%] flex flex-col lg:flex-row">
+    <div className="w-full h-auto lg:h-[754px] my-[150px] px-[3%] flex flex-col lg:flex-row">
       <div className="basis-1/4 px-4 py-8  hover:basis-2/4 transition-all flex flex-col justify-between">
         <div className="header text-5xl">
           Lorem impsum dolor sit amet, consectetur

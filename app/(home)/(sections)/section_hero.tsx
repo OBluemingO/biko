@@ -85,7 +85,7 @@ const SectionHero = () => {
             <ButtonGray>DISCOVER THE BENEFITES</ButtonGray>
           </motion.div>
         </div>
-        <div className="absolute left-0 w-full bottom-0 h-[20%] bg-gradient-to-t from-black to-transparent" />
+        <div className="absolute left-0 -z-[10] w-full bottom-0 h-[20%] bg-gradient-to-t from-black to-transparent" />
       </div>
     </div>
   );

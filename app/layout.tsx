@@ -4,6 +4,8 @@ import Navbar from "@/components/Navbar";
 import MenuBar from "@/components/MenuBar";
 import AuthModal from "@/components/modals/Auth.component";
 import Footer from "@/components/Footer";
+import { AnimatePresence } from "framer-motion";
+import ProviderAnimate from "./(Animate)/ProviderAnimate";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +21,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navbar />
           <MenuBar />
           <AuthModal />
-          {children}
+          <ProviderAnimate>
+            {children}
+          </ProviderAnimate>
           <Footer />
       </body>
     </html>

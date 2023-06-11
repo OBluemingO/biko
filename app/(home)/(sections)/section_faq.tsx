@@ -24,7 +24,7 @@ const SectionFaq = () => {
     <>
       <ImageTrackingCursor {...{ show, current }} />
       <div className="px-[7.5%] mt-[150px]">
-        <div className="text-center text-8xl  mb-[100px]">Most Common FAQ</div>
+        <div className="text-center text-faq-header lg:text-8xl  mb-[100px]">Most Common FAQ</div>
         <div
           onMouseEnter={handleOnMouseOverShow}
           onMouseLeave={handleOnMouseLeaveShow}
