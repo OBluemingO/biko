@@ -1,13 +1,22 @@
 "use client";
 import { useMotionValueEvent, useScroll, motion, useInView } from "framer-motion";
 import clsx from 'clsx'
-import { useEffect, useRef, useState } from "react";
+import { useState, useEffect } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { useModalStore } from "@/stores/store";
 
 const MenuBar: React.FC = () => {
     const [show, setShow] = useState(false);
     const [showFooterBar, setShowFooterBar] = useState(false)
     const [currentHover, setCurrentHover] = useState(0)
+    const action_modal_auth = useModalStore((state) => state.action_modal_auth);
+    const modal_auth = useModalStore((state) => state.modal_auth);
+
+    useEffect(() => {
+      if(modal_auth) {
+        setShowFooterBar(false)
+      }
+    },[modal_auth])
 
     const { scrollYProgress } = useScroll();
 
@@ -33,7 +42,9 @@ const MenuBar: React.FC = () => {
           className={clsx(
             "grid select-none place-items-center fixed h-[80px] bottom-[150px] lg:bottom-[30px] w-[80px] mix-blend-difference right-[3%] z-[7000] cursor-pointer bg-white rounded-full"
           )}
-          onClick={() => setShowFooterBar((prev) => !prev)}
+          onClick={() => {
+            if(!modal_auth) setShowFooterBar((prev) => !prev)
+          }}
         >
           <GiHamburgerMenu
             className="mix-blend-difference w-2/4 h-2/4"
@@ -69,6 +80,7 @@ const MenuBar: React.FC = () => {
             <div
               className="w-1/4 border-l-[1px] cursor-pointer"
               onMouseOver={() => setCurrentHover(3)}
+              onClick={() => action_modal_auth(true)}
             >
               Login
             </div>

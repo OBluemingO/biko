@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { motion } from "framer-motion";
+import { useModalStore } from "@/stores/store";
 
 const Navbar = () => {
   const fadeIn = {
@@ -28,6 +29,9 @@ const Navbar = () => {
       visible: { opacity: 1, y: "0%" },
     };
 
+
+  const action_modal_auth = useModalStore((state) => state.action_modal_auth);
+
   return (
     <>
       <div className="absolute z-50 mx-auto flex w-full justify-between px-[3%] pt-[50px] text-xl text-body">
@@ -43,28 +47,22 @@ const Navbar = () => {
           variants={group}
           initial="hidden"
           animate="visible"
-          className="hidden gap-5 lg:flex relative "
+          className="relative hidden gap-5 lg:flex "
         >
-          
-          <motion.span
-            variants={eachBody}
-          >
+          <motion.span variants={eachBody}>
             <Link className="cursor-pointer" href={"/about_us"}>
               About us
             </Link>
           </motion.span>
-          <motion.span
-            variants={eachBody}
-          >
+          <motion.span variants={eachBody}>
             <Link href="/benefits">Benefits</Link>
           </motion.span>
-          <motion.span
-            variants={eachBody}
-          >
+          <motion.span variants={eachBody}>
             <Link href="/contact">Contact</Link>
           </motion.span>
           <motion.span
             variants={eachBody}
+            onClick={() => action_modal_auth(true)}
           >
             <button>Login</button>
           </motion.span>
