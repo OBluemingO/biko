@@ -37,11 +37,11 @@ const AuthModal = () => {
             animate={{ top: modal_auth ? "0%" : "-100%" }}
             className="fixed z-[300] grid  h-full w-full place-items-center bg-[rgba(0,0,0,0.4)]"
         >
-            <motion.div className="flex h-3/4 max-h-[567px] w-3/4  max-w-[792px] flex-col overflow-hidden rounded-3xl  bg-white lg:w-1/2 lg:flex-row">
-                <div className="h-1/2 w-full p-4 lg:h-full  lg:w-1/2">
-                    <div className="flex h-full w-full flex-col justify-around rounded-3xl bg-biko-d bg-cover text-white ">
-                        <div>
-                            <div className="mx-auto w-5/6 pt-20 text-4xl font-semibold">
+            <motion.div className="flex h-[95%] w-3/4 max-w-[792px] flex-col  overflow-hidden rounded-3xl bg-white lg:h-3/4  lg:max-h-[567px] lg:w-1/2 lg:flex-row">
+                <div className="h-1/4 w-full p-4 lg:h-full  lg:w-1/2">
+                    <div className="flex h-full w-full flex-col rounded-3xl bg-biko-d bg-cover text-white lg:justify-around ">
+                        <div className="pt-5 text-center lg:pt-0">
+                            <div className="mx-auto w-5/6 text-4xl font-semibold lg:pt-20">
                                 Lorem ipsum dolor sit amet.
                             </div>
                             <div className="mx-auto w-5/6 pt-5 text-body">
@@ -49,7 +49,7 @@ const AuthModal = () => {
                                 adipisicing elit. Quaerat
                             </div>
                         </div>
-                        <div className="mx-auto flex h-1/4 w-5/6 flex-col justify-around rounded-lg bg-slate-900 px-4 py-2 text-white">
+                        <div className="mx-auto hidden h-1/4 w-5/6 flex-col justify-around rounded-lg bg-slate-900 px-4 py-2 text-white lg:flex">
                             <div className="text-detailBody">
                                 Lorem ipsum dolor sit, amet consectetur
                                 adipisicing elit. Sed sapiente impedit cum.
@@ -76,7 +76,7 @@ const AuthModal = () => {
                                 y: 50,
                                 opacity: 0,
                             }}
-                            className="h-1/2 w-full overflow-y-scroll lg:overflow-y-hidden p-4 lg:h-full  lg:w-1/2"
+                            className="h-3/4 w-full overflow-y-scroll p-4 lg:h-full lg:w-1/2  lg:overflow-y-hidden"
                         >
                             <div className="h-full w-full rounded-3xl  text-black">
                                 <div className="mx-auto w-5/6 pt-8">
@@ -131,25 +131,22 @@ const AuthModal = () => {
                                 y: 50,
                                 opacity: 0,
                             }}
-                            className="h-full w-1/2  p-4"
+                            className=" h-3/4 w-full p-4 lg:h-full  lg:w-1/2"
                         >
                             <div className="h-full w-full rounded-3xl  text-black">
                                 <div className="mx-auto w-5/6 pt-8">
-                                    <h1 className="text-4xl font-bold">
-                                        Get started
-                                    </h1>
-                                    <h4 className="text-body">
-                                        create your account now
-                                    </h4>
+                                    <h1 className="text-4xl lg:text-2xl font-bold">Create Account</h1>
                                 </div>
                                 <form onSubmit={handleSubmit}>
                                     <AuthInput
                                         {...{ name: "Full Name", type: "text" }}
                                         key="input-full-name"
+                                        place_holder="johnny depp"
                                     />
                                     <AuthInput
                                         {...{ name: "Email", type: "email" }}
                                         key="input-username"
+                                        place_holder="example@gmail.com"
                                     />
                                     <AuthInput
                                         {...{
@@ -157,6 +154,7 @@ const AuthModal = () => {
                                             type: "password",
                                         }}
                                         key="input-password"
+                                        place_holder="xxxxxxxxxx"
                                     />
 
                                     <button

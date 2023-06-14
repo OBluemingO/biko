@@ -50,7 +50,7 @@ const SectionHero = () => {
         >
           {TextHeader.map((el, index) => {
             return (
-              <motion.span variants={eachText} className="relative">
+              <motion.span key={`text-header-pop-${index}`} variants={eachText} className="relative">
                 {el}
               </motion.span>
             );
@@ -71,7 +71,7 @@ const SectionHero = () => {
           >
             {TextDetail.map((el, index) => {
               return (
-                <motion.span variants={eachBody} className="mr-[5px]">
+                <motion.span key={`text-detail-pop-${index}`} variants={eachBody} className="mr-[5px]">
                   {el}
                 </motion.span>
               );
