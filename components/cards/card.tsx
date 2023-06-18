@@ -16,7 +16,7 @@ const Card: React.FC<Props> = ({ rate, body, name, image, logo_brands }: Props) 
     <div className="p-[30px] relative  h-full rounded-[20px] bg-[#141415] text-white">
       <div className="header mb-5 flex gap-5 items-center">
         <div className="avatar relative rounded-full w-[72px] h-[72px] overflow-hidden bg-white">
-          <Image className="absolute" src={image} fill alt='avatar' />
+          <Image className="absolute"  src={image} fill alt='avatar' />
         </div>
         <div className="flex flex-col gap-2">
           <div className="name text-xl font-semibold">{name}</div>

@@ -31,47 +31,44 @@ const SectionFaq = () => {
         >
           <motion.div
             onMouseOver={() => handleOnMouseOver(0)}
-            className="flex border-t-[1px] items-center justify-between py-8"
+            className="flex flex-col lg:flex-row border-t-[1px] items-center justify-between py-8"
           >
-            <div className="flex flex-col gap-5">
+            <div className="flex items-center lg:items-baseline flex-col gap-5">
               <LogoLine />
-              <p className="text-2xl font-light">Lorem ipsum dolor sit amet</p>
+              <p className="text-2xl font-bold lg:font-light">Lorem ipsum dolor sit amet</p>
             </div>
-            <div className="w-1/2">
+            <div className="text-center w-3/4 lg:text-left lg:w-1/2">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus
               magni quaerat voluptatem inventore nemo eos culpa, non dolorem
               reprehenderit aspernatur labore. Architecto, repellendus optio.
-              Magnam, deleniti quos! Quidem, eum obcaecati.
             </div>
           </motion.div>
           <motion.div
             onMouseOver={() => handleOnMouseOver(1)}
-            className="flex border-t-[1px] items-center justify-between py-8"
+            className="flex flex-col lg:flex-row border-t-[1px] items-center justify-between py-8"
           >
-            <div className="flex flex-col gap-5">
+            <div className="flex items-center lg:items-baseline flex-col gap-5">
               <Clip />
-              <p className="text-2xl font-light">Lorem ipsum dolor sit amet</p>
+              <p className="text-2xl font-bold lg:font-light">Lorem ipsum dolor sit amet</p>
             </div>
-            <div className="w-1/2">
+            <div className="w-3/4 text-center lg:text-left lg:w-1/2">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus
               magni quaerat voluptatem inventore nemo eos culpa, non dolorem
               reprehenderit aspernatur labore. Architecto, repellendus optio.
-              Magnam, deleniti quos! Quidem, eum obcaecati.
             </div>
           </motion.div>
           <motion.div
             onMouseOver={() => handleOnMouseOver(2)}
-            className="flex border-t-[1px] border-b-[1px] items-center justify-between py-8"
+            className="flex flex-col lg:flex-row border-t-[1px] border-b-[1px] items-center justify-between py-8"
           >
-            <div className="flex flex-col gap-5">
+            <div className="flex items-center lg:items-baseline flex-col gap-5">
               <Biko />
-              <p className="text-2xl font-light">Lorem ipsum dolor sit amet</p>
+              <p className="text-2xl font-bold lg:font-light">Lorem ipsum dolor sit amet</p>
             </div>
-            <div className="w-1/2">
+            <div className="w-3/4 text-center lg:text-left lg:w-1/2">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus
               magni quaerat voluptatem inventore nemo eos culpa, non dolorem
               reprehenderit aspernatur labore. Architecto, repellendus optio.
-              Magnam, deleniti quos! Quidem, eum obcaecati.
             </div>
           </motion.div>
         </div>
