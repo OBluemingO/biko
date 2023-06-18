@@ -1,11 +1,27 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, useMotionValueEvent, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
+import { useRef } from "react";
+import BikoA  from '../../../public/images/galactic-night-sky-astronomy-science-combined-generative-ai.jpg'
 
 const SectionImage = () => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  // const { scrollYProgress } = useScroll({
+  //   target: containerRef,
+  //   offset: ["start end", "end start"],
+  // });
+
+  // const  backgroundPosition = useTransform(scrollYProgress, [0, 0.5], [`0% -100%`, `0% 100%`]);
+  // useMotionValueEvent(backgroundPosition, "change", (latest) => {
+  //   console.log("PosY: ", latest);
+  // });
   return (
-    <div className="flex h-screen w-full flex-col gap-5 px-[3%] lg:h-[1611px]">
+    <div
+      ref={containerRef}
+      className="flex h-screen w-full flex-col gap-5 px-[3%] lg:h-[1611px]"
+    >
       <div className="flex h-[50%] gap-5 lg:h-[873px]">
-        <motion.div className="r basis-1/2 overflow-hidden rounded-[20px] ">
+        <motion.div className="basis-1/2 overflow-hidden rounded-[20px] ">
           <motion.div
             initial={{ scale: "110%" }}
             transition={{ duration: 0.6, ease: "easeOut" }}

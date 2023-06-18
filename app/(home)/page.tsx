@@ -6,14 +6,14 @@ import SectionDetail from "./(sections)/section_detail";
 import SectionFaq from "./(sections)/section_faq";
 import SectionHero from "./(sections)/section_hero";
 import SectionImage from "./(sections)/section_image";
+import SectionFullImage  from "./(sections)/section_fullimage"
 import {
   LoginButton,
   LogoutButton,
   ProfileButton,
   RegisterButton,
 } from "@/components/buttons/button.auth";
-import { PageWrapper } from "@/components/WraperPage";
-import { usePathname } from "next/navigation";
+import SectionImageDetail from "./(sections)/section_image_detail";
 // import { PageWrapper } from "@/components/WraperPage";
 
 // ? NOTE: data fetch in server component
@@ -30,7 +30,6 @@ import { usePathname } from "next/navigation";
 
 export default function Home() {
 
-  const pathname = usePathname()
   return (
       <motion.main
         className="w-full overflow-x-hidden"
@@ -40,6 +39,8 @@ export default function Home() {
         <SectionDetail />
         <SectionImage />
         <SectionFaq />
+        <SectionFullImage />
+        <SectionImageDetail />
         <SectionContact />
       </motion.main>
   );
