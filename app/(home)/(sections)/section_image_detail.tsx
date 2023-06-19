@@ -34,7 +34,7 @@ const SectionImageDetail = () => {
           <h2 className="text-4xl font-semibold">10 kg</h2>
         </div>
       </div>{" "}
-      <div className="flex h-full flex-grow  items-center justify-around border-r-[1px]">
+      <div className="hidden lg:flex h-full flex-grow  items-center justify-around border-r-[1px]">
         <div className="">
           <div className="flex items-center justify-center gap-2">
             <TbWeight />
@@ -50,7 +50,7 @@ const SectionImageDetail = () => {
           <h2 className="text-4xl font-semibold">10 kg</h2>
         </div>
       </div>{" "}
-      <div className="flex h-full w-[300px] px-16 items-center justify-center">
+      <div className="hidden lg:flex h-full lg:w-[300px] lg:px-16 items-center justify-center">
         All the components are made in USA and ansambled in Japan
       </div>{" "}
     </div>

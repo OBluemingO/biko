@@ -21,59 +21,70 @@ const SectionFaq = () => {
   };
 
   return (
-    <>
-      <ImageTrackingCursor {...{ show, current }} />
-      <div className="px-[7.5%] mt-[150px]">
-        <div className="text-center text-faq-header lg:text-8xl  mb-[100px]">Most Common FAQ</div>
-        <div
-          onMouseEnter={handleOnMouseOverShow}
-          onMouseLeave={handleOnMouseLeaveShow}
-        >
-          <motion.div
-            onMouseOver={() => handleOnMouseOver(0)}
-            className="flex flex-col lg:flex-row border-t-[1px] items-center justify-between py-8"
-          >
-            <div className="flex items-center lg:items-baseline flex-col gap-5">
-              <LogoLine />
-              <p className="text-2xl font-bold lg:font-light">Lorem ipsum dolor sit amet</p>
-            </div>
-            <div className="text-center w-3/4 lg:text-left lg:w-1/2">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus
-              magni quaerat voluptatem inventore nemo eos culpa, non dolorem
-              reprehenderit aspernatur labore. Architecto, repellendus optio.
-            </div>
-          </motion.div>
-          <motion.div
-            onMouseOver={() => handleOnMouseOver(1)}
-            className="flex flex-col lg:flex-row border-t-[1px] items-center justify-between py-8"
-          >
-            <div className="flex items-center lg:items-baseline flex-col gap-5">
-              <Clip />
-              <p className="text-2xl font-bold lg:font-light">Lorem ipsum dolor sit amet</p>
-            </div>
-            <div className="w-3/4 text-center lg:text-left lg:w-1/2">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus
-              magni quaerat voluptatem inventore nemo eos culpa, non dolorem
-              reprehenderit aspernatur labore. Architecto, repellendus optio.
-            </div>
-          </motion.div>
-          <motion.div
-            onMouseOver={() => handleOnMouseOver(2)}
-            className="flex flex-col lg:flex-row border-t-[1px] border-b-[1px] items-center justify-between py-8"
-          >
-            <div className="flex items-center lg:items-baseline flex-col gap-5">
-              <Biko />
-              <p className="text-2xl font-bold lg:font-light">Lorem ipsum dolor sit amet</p>
-            </div>
-            <div className="w-3/4 text-center lg:text-left lg:w-1/2">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus
-              magni quaerat voluptatem inventore nemo eos culpa, non dolorem
-              reprehenderit aspernatur labore. Architecto, repellendus optio.
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </>
+      <>
+          <ImageTrackingCursor {...{ show, current }} />
+          <div className="mt-[150px] px-[7.5%]">
+              <div className="mb-[100px] text-center text-faq-header  lg:text-8xl">
+                  Most Common FAQ
+              </div>
+              <div
+                  onMouseEnter={handleOnMouseOverShow}
+                  onMouseLeave={handleOnMouseLeaveShow}
+              >
+                  <motion.div
+                      onMouseOver={() => handleOnMouseOver(0)}
+                      className="flex flex-col items-center justify-between border-t-[1px] py-8 transition-all lg:hover:px-8 lg:flex-row"
+                  >
+                      <div className="flex flex-col items-center gap-5 lg:items-baseline">
+                          <LogoLine />
+                          <p className="text-2xl font-bold lg:font-light">
+                              Lorem ipsum dolor sit amet
+                          </p>
+                      </div>
+                      <div className="w-3/4 text-center lg:w-1/2 lg:text-left">
+                          Lorem ipsum dolor sit amet, consectetur adipisicing
+                          elit. Ducimus magni quaerat voluptatem inventore nemo
+                          eos culpa, non dolorem reprehenderit aspernatur
+                          labore. Architecto, repellendus optio.
+                      </div>
+                  </motion.div>
+                  <motion.div
+                      onMouseOver={() => handleOnMouseOver(1)}
+                      className="flex flex-col items-center justify-between border-t-[1px] py-8 lg:hover:px-8 lg:flex-row transition-all"
+                  >
+                      <div className="flex flex-col items-center gap-5 lg:items-baseline">
+                          <Clip />
+                          <p className="text-2xl font-bold lg:font-light">
+                              Lorem ipsum dolor sit amet
+                          </p>
+                      </div>
+                      <div className="w-3/4 text-center lg:w-1/2 lg:text-left">
+                          Lorem ipsum dolor sit amet, consectetur adipisicing
+                          elit. Ducimus magni quaerat voluptatem inventore nemo
+                          eos culpa, non dolorem reprehenderit aspernatur
+                          labore. Architecto, repellendus optio.
+                      </div>
+                  </motion.div>
+                  <motion.div
+                      onMouseOver={() => handleOnMouseOver(2)}
+                      className="flex flex-col items-center justify-between border-b-[1px] border-t-[1px] py-8 transition-all lg:hover:px-8 lg:flex-row"
+                  >
+                      <div className="flex flex-col items-center gap-5 lg:items-baseline">
+                          <Biko />
+                          <p className="text-2xl font-bold lg:font-light">
+                              Lorem ipsum dolor sit amet
+                          </p>
+                      </div>
+                      <div className="w-3/4 text-center lg:w-1/2 lg:text-left">
+                          Lorem ipsum dolor sit amet, consectetur adipisicing
+                          elit. Ducimus magni quaerat voluptatem inventore nemo
+                          eos culpa, non dolorem reprehenderit aspernatur
+                          labore. Architecto, repellendus optio.
+                      </div>
+                  </motion.div>
+              </div>
+          </div>
+      </>
   );
 };
 
