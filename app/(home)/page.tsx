@@ -14,6 +14,7 @@ import {
   RegisterButton,
 } from "@/components/buttons/button.auth";
 import SectionImageDetail from "./(sections)/section_image_detail";
+import { useLayoutEffect } from "react";
 // import { PageWrapper } from "@/components/WraperPage";
 
 // ? NOTE: data fetch in server component
@@ -29,6 +30,10 @@ import SectionImageDetail from "./(sections)/section_image_detail";
 // }
 
 export default function Home() {
+  useLayoutEffect(() => {
+    document.documentElement.scrollTo({top:0})
+  
+  }, [])
 
   return (
       <motion.main

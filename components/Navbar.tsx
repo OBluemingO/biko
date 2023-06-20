@@ -49,20 +49,30 @@ const Navbar = () => {
           animate="visible"
           className="relative hidden gap-5 lg:flex "
         >
-          <motion.span variants={eachBody}>
+          <motion.span
+            variants={eachBody}
+            className="relative after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-x-0 after:bg-white after:transition-all after:hover:scale-x-100"
+          >
             <Link className="cursor-pointer" href={"/about_us"}>
               About us
             </Link>
           </motion.span>
-          <motion.span variants={eachBody}>
+          <motion.span
+            variants={eachBody}
+            className="relative after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-x-0 after:bg-white after:transition-all after:hover:scale-x-100"
+          >
             <Link href="/benefits">Benefits</Link>
           </motion.span>
-          <motion.span variants={eachBody}>
+          <motion.span
+            variants={eachBody}
+            className="relative after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-x-0 after:bg-white after:transition-all after:hover:scale-x-100"
+          >
             <Link href="/contact">Contact</Link>
           </motion.span>
           <motion.span
             variants={eachBody}
             onClick={() => action_modal_auth(true)}
+            className="relative after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-x-0 after:bg-white after:transition-all after:hover:scale-x-100"
           >
             <button>Login</button>
           </motion.span>
