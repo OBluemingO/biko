@@ -2,6 +2,18 @@ import ButtonGray from "@/components/buttons/button";
 import Card from "@/components/cards/card";
 import React, { useState } from "react"
 import clsx from "clsx";
+import { motion } from "framer-motion";
+
+type TCategorie = 'wheels' | 'drivetrain' | 'frame' | 'name';
+type TDetail = 'detail' | 'percent';
+
+type IData = {
+    [key in TCategorie]:
+        (string & {})
+        | {
+              [index in TDetail]: string | number;
+          }
+};
 
 const SectionAbout = () => {
   // const content = {
@@ -18,7 +30,33 @@ const SectionAbout = () => {
   //   image: "https://mystiquemedicalspa.com/wp-content/uploads/2014/11/bigstock-159411362-Copy.jpg",
   // };
 
-  const [active, setActive] = useState(0)
+  const [active, setActive] = useState<number>(0)
+  const [data, setData] = useState<IData[]>([
+      {
+          name: "test-1",
+          drivetrain: { detail: "asdfsdf", percent: 50 },
+          wheels: { detail: "asdfsdf", percent: 20 },
+          frame: { detail: "asdfsdf", percent: 40 },
+      },
+      {
+          name: "test-2",
+          drivetrain: { detail: "asdfsdf", percent: 10 },
+          wheels: { detail: "asdfsdf", percent: 10 },
+          frame: { detail: "asdfsdf", percent: 10 },
+      },
+      {
+          name: "test-3",
+          drivetrain: { detail: "asdfsdf", percent: 10 },
+          wheels: { detail: "asdfsdf", percent: 10 },
+          frame: { detail: "asdfsdf", percent: 30 },
+      },
+      {
+          name: 'test-4',
+          drivetrain: { detail: "asdfsdf", percent: 40 },
+          wheels: { detail: "asdfsdf", percent: 20 },
+          frame: { detail: "asdfsdf", percent: 90 },
+      },
+  ]);
 
   const handleClickActive = (idx: number) => {
     setActive(idx)
@@ -72,26 +110,53 @@ const SectionAbout = () => {
                           );
                       })}
               </div>
-              <div className="h-full flex-grow bg-white"></div>
-              {/* <div className="w-full h-full flex flex-col gap-10 ">
-          <div className=" w-full h-1/2">
-            <Card {...content} />
-          </div>
-          <div className=" w-full h-1/2">
-            <Card {...{ ...content, rate: 3 }} />
-          </div>
-        </div>
-        <div className="w-full h-full ">
-          <Card {...{ ...contentMain, rate: 6 }} />
-        </div>
-        <div className="w-full h-full flex flex-col gap-10 ">
-          <div className=" w-full h-1/2">
-            <Card {...{ ...content, rate: 2 }} />
-          </div>
-          <div className=" w-full h-1/2">
-            <Card {...{ ...content, rate: 1 }} />
-          </div>
-        </div> */}
+              <div className="h-full flex-grow  p-[5%]">
+                  <div className="flex h-full w-full flex-col px-[10%]">
+                      <div className="h-2/3 w-full">
+                          {Object.keys(data[active]).filter(el => el != 'name').map((el:string) => {
+                              console.log(data[active][el as TCategorie])
+                              return (
+                                  <div
+                                      className={clsx(
+                                          "relative grid h-1/3 w-full grid-cols-4"
+                                      )}
+                                  >
+                                      <div className="absolute left-0 top-1/2 z-30 h-[90%] w-full -translate-y-1/2 border-y-2 ">
+                                          <motion.div
+                                              style={{
+                                                  width: `${
+                                                      data[active][
+                                                          el as TCategorie
+                                                      ]
+                                                  }%`,
+                                              }}
+                                              className="h-full transition-all rounded-r-full bg-white "
+                                          ></motion.div>
+                                      </div>
+                                      <div className="absolute left-0 top-1/2 z-30 flex h-[90%] w-full -translate-y-1/2 items-center bg-transparent px-5 text-white mix-blend-difference">
+                                          LOREM lorem lorem
+                                      </div>
+                                      {Array(4)
+                                          .fill(null)
+                                          .map((el, idx, ele) => {
+                                              return (
+                                                  <div
+                                                      className={clsx(
+                                                          "relative -top-[15%] h-[130%] w-full",
+                                                          idx == ele.length - 1
+                                                              ? `border-x-2`
+                                                              : `border-l-2`
+                                                      )}
+                                                  ></div>
+                                              );
+                                          })}
+                                  </div>
+                              );
+                          })}
+                      </div>
+                      <div className="w-full flex-grow "></div>
+                  </div>
+              </div>
           </div>
       </>
   );
