@@ -60,7 +60,7 @@ const SectionHero = () => {
           variants={lineAnimation}
           initial={"hidden"}
           animate={"visible"}
-          className="line mb-[35px] mt-[25px] h-[1px] w-full bg-[#414141]"
+          className="line mb-[15px] mt-[10px] md:mb-[35px] md:mt-[25px] h-[1px] w-full bg-[#414141]"
         ></motion.div>
         <div className="flex w-full flex-col items-left justify-between gap-5 md:flex-row md:gap-0">
           <motion.div

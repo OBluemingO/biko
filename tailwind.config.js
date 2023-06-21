@@ -11,6 +11,7 @@ module.exports = {
         header: 'clamp(1rem,10vw,6rem)',
         ['faq-header']: 'clamp(1rem,8vw,6rem)',
         ['footer-header']: 'clamp(1rem,3.5vw,6rem)',
+        ['menu-footer']: 'clamp(0.7rem,1.5vw,2rem)',
         detailBody: 'clamp(0.75rem,0.85vw,1.5rem)'
       },
       backgroundImage: {

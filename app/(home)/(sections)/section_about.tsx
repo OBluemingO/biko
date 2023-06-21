@@ -73,11 +73,13 @@ const SectionAbout = () => {
         <div className="absolute left-0 top-0 h-[40%] w-full bg-gradient-to-b from-black to-transparent" />
         <div className="absolute bottom-0 left-0 h-[20%] w-full bg-gradient-to-t from-black to-transparent" />
       </div>
-      <div className="flex  border-rose-50 bg-black px-[5%] pb-[150px] md:h-auto lg:h-[895px]">
-        <div className="flex h-full w-[30%] flex-col">
-          {Array(4)
-            .fill(null)
-            .map((el, idx) => {
+      <div className="flex flex-col border-rose-50  bg-black px-[5%] pb-[150px] md:h-auto md:flex-row h-[600px] lg:h-[895px]">
+        <div className="flex w-full md:w-[30%] flex-row overflow-x-scroll lg:overflow-auto md:h-full md:flex-col">
+          {
+            data
+            .map((el, idx:number) => {
+              const { name, drivetrain, frame, wheels } = el as IData;
+              const menu_nevigate_name = name as string
               return (
                 <div
                   className={clsx(
@@ -87,8 +89,8 @@ const SectionAbout = () => {
                   onClick={() => handleClickActive(idx)}
                 >
                   <div className="flex flex-col justify-center px-5">
-                    <div className="text-2xl">mocmock</div>
-                    <div>
+                    <div className="text-2xl">{menu_nevigate_name}</div>
+                    <div className="hidden md:block">
                       Lorem ipsum dolor sit amet consectetur adipisicing nemo
                       quis temporibus commodi.
                     </div>
@@ -97,9 +99,9 @@ const SectionAbout = () => {
               );
             })}
         </div>
-        <div className="h-full flex-grow px-[5%]">
-          <div className="flex h-full w-full flex-col px-[10%]">
-            <div className="h-2/3 my-auto w-full">
+        <div className="flex-grow lg:px-[5%]">
+          <div className="flex h-full w-full flex-col lg:px-[10%]">
+            <div className="my-auto h-2/3 w-full">
               {Object.keys(data[active])
                 .filter((el) => el != "name")
                 .map((el, index, ell_all) => {
@@ -122,7 +124,7 @@ const SectionAbout = () => {
                         ></motion.div>
                       </div>
                       <div className="absolute left-0 top-1/2 z-30 flex h-[90%] w-full -translate-y-1/2 items-center bg-transparent px-5 text-white mix-blend-difference">
-                        <p className="uppercase mr-2">{el} :</p>
+                        <p className="mr-2 uppercase">{el} :</p>
                         <p>{detail}</p>
                       </div>
                       {Array(4)
@@ -160,7 +162,6 @@ const SectionAbout = () => {
                   );
                 })}
             </div>
-            {/* <div className="w-full flex-grow "></div> */}
           </div>
         </div>
       </div>

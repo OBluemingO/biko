@@ -58,7 +58,7 @@ const MenuBar: React.FC = () => {
           transition={{ease: 'easeOut'}}
           className="fixed z-[5000] flex justify-center items-center bottom-0 bg-transparent w-full h-[140px]"
         >
-          <div className=" text-center relative border-2 flex text-white uppercase overflow-hidden items-center rounded-full border-white w-[calc(100vw-10%)] lg:w-[calc(100vw-30%)] h-[80px] transition-all bg-[#141415]">
+          <div className="text-center text-menu-footer relative border-2 flex text-white uppercase overflow-hidden items-center rounded-full border-white w-[calc(100vw-2.5%)] lg:w-[calc(100vw-30%)] h-[80px] transition-all bg-[#141415]">
             <div
               className="w-1/4 cursor-pointer"
               onMouseOver={() => setCurrentHover(0)}

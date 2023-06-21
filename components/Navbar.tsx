@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Link from "next/link";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { motion } from "framer-motion";
@@ -7,7 +7,11 @@ import { useModalStore } from "@/stores/store";
 const Navbar = () => {
   const fadeIn = {
     hidden: { opacity: 0, x: -50 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease:'easeOut' } },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
   };
 
   const group = {
@@ -24,11 +28,10 @@ const Navbar = () => {
     },
   };
 
-    const eachBody = {
-      hidden: { opacity: 0, y: "100%" },
-      visible: { opacity: 1, y: "0%" },
-    };
-
+  const eachBody = {
+    hidden: { opacity: 0, y: "100%" },
+    visible: { opacity: 1, y: "0%" },
+  };
 
   const action_modal_auth = useModalStore((state) => state.action_modal_auth);
 
@@ -90,6 +93,6 @@ const Navbar = () => {
       </motion.div>
     </>
   );
-}
+};
 
-export default Navbar
+export default Navbar;
