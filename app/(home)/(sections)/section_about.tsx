@@ -4,13 +4,16 @@ import clsx from "clsx";
 import { motion } from "framer-motion";
 
 type TCategorie = "wheels" | "drivetrain" | "frame" | "name";
+type TCateWithOutName = Exclude<TCategorie ,"name" >
 type TDetail = "detail" | "percent";
 
+type TypeDetail = {
+  [K in TDetail]: K extends "detail" ? string : number;
+};
+
 type IData = {
-  [key in TCategorie]:
-    | {
-        [index in TDetail]: string | number;
-      }
+  [K in TCategorie]:
+    | TypeDetail
     | (string & {});
 };
 
@@ -103,11 +106,9 @@ const SectionAbout = () => {
           <div className="flex h-full w-full flex-col lg:px-[10%]">
             <div className="my-auto h-2/3 w-full">
               {Object.keys(data[active])
-                .filter((el) => el != "name")
-                .map((el, index, ell_all) => {
-                  const { detail, percent } = data[active][
-                    el as TCategorie
-                  ] as { detail: string; percent: number };
+                .filter((el):el is TCateWithOutName => el != "name")
+                .map((el:TCateWithOutName , index:number, ell_all) => {
+                  const { detail, percent } = data[active][el] as TypeDetail
                   return (
                     <div
                       className={clsx("relative grid h-1/3 w-full grid-cols-4")}
