@@ -13,8 +13,7 @@ type TypeDetail = {
 
 type IData = {
   [K in TCategorie]:
-    | TypeDetail
-    | (string & {});
+    K extends 'name'  ? (string & {}) : TypeDetail
 };
 
 const SectionAbout = () => {
@@ -82,7 +81,6 @@ const SectionAbout = () => {
             data
             .map((el:IData, idx:number) => {
               const { name, drivetrain, frame, wheels } = el
-              const menu_nevigate_name = name as string
               return (
                 <div
                   className={clsx(
@@ -92,7 +90,7 @@ const SectionAbout = () => {
                   onClick={() => handleClickActive(idx)}
                 >
                   <div className="flex flex-col justify-center px-5">
-                    <div className="text-2xl">{menu_nevigate_name}</div>
+                    <div className="text-2xl">{name}</div>
                     <div className="hidden md:block">
                       Lorem ipsum dolor sit amet consectetur adipisicing nemo
                       quis temporibus commodi.
@@ -108,7 +106,7 @@ const SectionAbout = () => {
               {Object.keys(data[active])
                 .filter((el):el is TCateWithOutName => el != "name")
                 .map((el:TCateWithOutName , index:number, ell_all) => {
-                  const { detail, percent } = data[active][el] as TypeDetail
+                  const {detail, percent} = data[active][el]
                   return (
                     <div
                       className={clsx("relative grid h-1/3 w-full grid-cols-4")}
