@@ -56,7 +56,7 @@ const SectionAbout = () => {
   const handleClickActive = (idx: number) => {
     setActive(idx);
   };
-
+  
   return (
     <>
       <div className="relative h-[1024px] w-full bg-biko-section bg-cover bg-[center_-1.5rem]">
@@ -80,8 +80,8 @@ const SectionAbout = () => {
         <div className="flex w-full md:w-[30%] flex-row overflow-x-scroll lg:overflow-auto md:h-full md:flex-col">
           {
             data
-            .map((el, idx:number) => {
-              const { name, drivetrain, frame, wheels } = el as IData;
+            .map((el:IData, idx:number) => {
+              const { name, drivetrain, frame, wheels } = el
               const menu_nevigate_name = name as string
               return (
                 <div
