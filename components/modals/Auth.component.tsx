@@ -41,10 +41,10 @@ const AuthModal = () => {
                 <div className="h-1/4 w-full p-4 lg:h-full  lg:w-1/2">
                     <div className="flex h-full w-full flex-col rounded-3xl bg-biko-d bg-cover text-white lg:justify-around ">
                         <div className="pt-5 text-center lg:pt-0">
-                            <div className="mx-auto w-5/6 text-4xl font-semibold lg:pt-20">
+                            <div className="hidden md:block mx-auto w-5/6 text-4xl font-semibold lg:pt-20">
                                 Lorem ipsum dolor sit amet.
                             </div>
-                            <div className="mx-auto w-5/6 pt-5 text-body">
+                            <div className="hidden md:block mx-auto w-5/6 pt-5 text-body">
                                 Lorem ipsum dolor, sit amet consectetur
                                 adipisicing elit. Quaerat
                             </div>

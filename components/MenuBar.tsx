@@ -34,67 +34,67 @@ const MenuBar: React.FC = () => {
     }
 
     return (
-      <>
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: show ? [0,1,1.2,1] : 0 }}
-          transition={ show ? { type: 'spring' } : {ease: 'easeOut'}}
-          className={clsx(
-            "grid select-none place-items-center fixed h-[80px] bottom-[150px] lg:bottom-[30px] w-[80px] mix-blend-difference right-[3%] z-[7000] cursor-pointer bg-white rounded-full"
-          )}
-          onClick={() => {
-            if(!modal_auth) setShowFooterBar((prev) => !prev)
-          }}
-        >
-          <GiHamburgerMenu
-            className="mix-blend-difference w-2/4 h-2/4"
-            color="white"
-          />
-        </motion.div>
-        <motion.div
-          variants={variants}
-          initial="hidden"
-          animate={showFooterBar ? "animate" : "hidden"}
-          transition={{ease: 'easeOut'}}
-          className="fixed z-[5000] flex justify-center items-center bottom-0 bg-transparent w-full h-[140px]"
-        >
-          <div className="text-center text-menu-footer relative border-2 flex text-white uppercase overflow-hidden items-center rounded-full border-white w-[calc(100vw-2.5%)] lg:w-[calc(100vw-30%)] h-[80px] transition-all bg-[#141415]">
-            <div
-              className="w-1/4 cursor-pointer"
-              onMouseOver={() => setCurrentHover(0)}
-            >
-              Home
-            </div>
-            <div
-              className="w-1/4 border-l-[1px] cursor-pointer"
-              onMouseOver={() => setCurrentHover(1)}
-            >
-              Benifits
-            </div>
-            <div
-              className="w-1/4 border-l-[1px] cursor-pointer"
-              onMouseOver={() => setCurrentHover(2)}
-            >
-              Contact
-            </div>
-            <div
-              className="w-1/4 border-l-[1px] cursor-pointer"
-              onMouseOver={() => setCurrentHover(3)}
-              onClick={() => action_modal_auth(true)}
-            >
-              Login
-            </div>
+        <>
             <motion.div
-              className="pointer-events-none absolute w-1/4 h-2/4  flex justify-center rounded-full"
-              initial={{ left: "0%" }}
-              animate={{ left: `calc(25% * ${currentHover})` }}
-              transition={{ type: "spring" }}
+                initial={{ scale: 0 }}
+                animate={{ scale: show ? [0, 1, 1.2, 1] : 0 }}
+                transition={show ? { type: "spring" } : { ease: "easeOut" }}
+                className={clsx(
+                    "fixed right-[3%] top-[3%] z-[7000] grid h-[30px] w-[30px] lg:h-[80px] lg:w-[80px] cursor-pointer select-none place-items-center rounded-full bg-white mix-blend-difference lg:bottom-[30px]"
+                )}
+                onClick={() => {
+                    if (!modal_auth) setShowFooterBar((prev) => !prev);
+                }}
             >
-              <div className="w-3/4 h-full mix-blend-difference rounded-full bg-white "></div>
+                <GiHamburgerMenu
+                    className="h-2/4 w-2/4 mix-blend-difference"
+                    color="white"
+                />
             </motion.div>
-          </div>
-        </motion.div>
-      </>
+            <motion.div
+                variants={variants}
+                initial="hidden"
+                animate={showFooterBar ? "animate" : "hidden"}
+                transition={{ ease: "easeOut" }}
+                className="fixed bottom-0 z-[5000] flex h-[140px] w-full items-center justify-center bg-transparent"
+            >
+                <div className="relative flex h-[80px] w-[calc(100vw-2.5%)] items-center overflow-hidden rounded-full border-2 border-white bg-[#141415] text-center text-menu-footer uppercase text-white transition-all lg:w-[calc(100vw-30%)]">
+                    <div
+                        className="w-1/4 cursor-pointer"
+                        onMouseOver={() => setCurrentHover(0)}
+                    >
+                        Home
+                    </div>
+                    <div
+                        className="w-1/4 cursor-pointer border-l-[1px]"
+                        onMouseOver={() => setCurrentHover(1)}
+                    >
+                        Benifits
+                    </div>
+                    <div
+                        className="w-1/4 cursor-pointer border-l-[1px]"
+                        onMouseOver={() => setCurrentHover(2)}
+                    >
+                        Contact
+                    </div>
+                    <div
+                        className="w-1/4 cursor-pointer border-l-[1px]"
+                        onMouseOver={() => setCurrentHover(3)}
+                        onClick={() => action_modal_auth(true)}
+                    >
+                        Login
+                    </div>
+                    <motion.div
+                        className="pointer-events-none absolute flex h-2/4  w-1/4 justify-center rounded-full"
+                        initial={{ left: "0%" }}
+                        animate={{ left: `calc(25% * ${currentHover})` }}
+                        transition={{ type: "spring" }}
+                    >
+                        <div className="h-full w-3/4 rounded-full bg-white mix-blend-difference "></div>
+                    </motion.div>
+                </div>
+            </motion.div>
+        </>
     );
 };
 

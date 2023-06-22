@@ -18,7 +18,34 @@ type IData = {
 
 const SectionAbout = () => {
   const [active, setActive] = useState<number>(0);
-  const [data, setData] = useState<IData[]>([
+  // const [data, setData] = useState<IData[]>([
+  //   {
+  //     name: "test-1",
+  //     drivetrain: { detail: "asdfsdf", percent: 50 },
+  //     wheels: { detail: "asdfsdf", percent: 20 },
+  //     frame: { detail: "asdfsdf", percent: 40 },
+  //   },
+  //   {
+  //     name: "test-2",
+  //     drivetrain: { detail: "asdfsdf", percent: 10 },
+  //     wheels: { detail: "asdfsdf", percent: 10 },
+  //     frame: { detail: "asdfsdf", percent: 100 },
+  //   },
+  //   {
+  //     name: "test-3",
+  //     drivetrain: { detail: "asdfsdf", percent: 10 },
+  //     wheels: { detail: "asdfsdf", percent: 10 },
+  //     frame: { detail: "asdfsdf", percent: 30 },
+  //   },
+  //   {
+  //     name: "test-4",
+  //     drivetrain: { detail: "asdfsdf", percent: 40 },
+  //     wheels: { detail: "asdfsdf", percent: 20 },
+  //     frame: { detail: "asdfsdf", percent: 90 },
+  //   },
+  // ]);
+
+  const data:IData[] = [
     {
       name: "test-1",
       drivetrain: { detail: "asdfsdf", percent: 50 },
@@ -43,7 +70,7 @@ const SectionAbout = () => {
       wheels: { detail: "asdfsdf", percent: 20 },
       frame: { detail: "asdfsdf", percent: 90 },
     },
-  ]);
+  ]
 
   useEffect(() => {
     const increase_active = setInterval(() => {
