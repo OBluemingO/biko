@@ -1,11 +1,11 @@
-'use client'
+"use client";
 import ButtonGray from "@/components/buttons/button";
 import React, { useState, useEffect, useRef } from "react";
 import clsx from "clsx";
 import { motion, useInView } from "framer-motion";
 
 type TCategorie = "wheels" | "drivetrain" | "frame" | "name";
-type TCateWithOutName = Exclude<TCategorie ,"name" >
+type TCateWithOutName = Exclude<TCategorie, "name">;
 type TDetail = "detail" | "percent";
 
 type TypeDetail = {
@@ -13,25 +13,18 @@ type TypeDetail = {
 };
 
 type IData = {
-  [K in TCategorie]:
-    K extends 'name'  ? (string & {}) : TypeDetail
+  [K in TCategorie]: K extends "name" ? string & {} : TypeDetail;
 };
 
 const SectionAbout = () => {
   const [active, setActive] = useState<number>(0);
-  const containerRef = useRef<HTMLDivElement | null>(null)
-  const containerBottomRef = useRef<HTMLDivElement | null>(null)
-  const isInview = useInView(containerRef, { amount: 0.6, once:true });
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const containerBottomRef = useRef<HTMLDivElement | null>(null);
+  const isInview = useInView(containerRef, { amount: 0.6, once: true });
   const isInviewBottom = useInView(containerBottomRef, {
     amount: 0.6,
     once: true,
   });
-
-  // useEffect(( ) => {
-  //   console.log('======= loglog',isInview )
-  // },[isInview])
-
-  
 
   // const [data, setData] = useState<IData[]>([
   //   {
@@ -60,7 +53,7 @@ const SectionAbout = () => {
   //   },
   // ]);
 
-  const data:IData[] = [
+  const data: IData[] = [
     {
       name: "test-1",
       drivetrain: { detail: "asdfsdf", percent: 50 },
@@ -85,7 +78,7 @@ const SectionAbout = () => {
       wheels: { detail: "asdfsdf", percent: 20 },
       frame: { detail: "asdfsdf", percent: 90 },
     },
-  ]
+  ];
 
   useEffect(() => {
     const increase_active = setInterval(() => {
@@ -98,15 +91,36 @@ const SectionAbout = () => {
     setActive(idx);
   };
 
-  const start_duration = 0.6 
-  const line_animation = {
-    hidden: { height: `0%` },
+  const start_duration = 0.6;
+
+  const line_horizontal_animation = {
+    hidden: { width: `0%` },
     show: (i: number) => ({
-      height: isInviewBottom ? `130%` : `0%`,
+      width: isInviewBottom ? `100%` : `0%`,
       transition: { delay: start_duration + 0.3 },
     }),
   };
-  
+
+  const line_vertical_animation = {
+    hidden: { height: `0%`, opacity: 0 },
+    show: (i: number) => ({
+      height: isInviewBottom ? `130%` : `0%`,
+      opacity: isInviewBottom ? 1 : 0,
+      transition: { delay: start_duration + 0.6 },
+    }),
+  };
+
+  const percent_animation = {
+    hidden: {
+      opacity: `0%`,
+    },
+    show: (i: number) => ({
+      opacity: isInviewBottom ? `100%` : `0%`,
+      transition: { delay: (start_duration + 1) + (i * 0.05) },
+    }),
+  };
+
+
   return (
     <>
       <div
@@ -135,7 +149,7 @@ const SectionAbout = () => {
               duration: start_duration,
               ease: [0, 0.71, 0.2, 1.01],
             }}
-            className={"mb-[20px] h-[1px] w-2/4 lg:w-1/4 bg-white"}
+            className={"mb-[20px] h-[1px] w-2/4 bg-white lg:w-1/4"}
           ></motion.div>
           <span className="overflow-hidden">
             <motion.p
@@ -174,82 +188,96 @@ const SectionAbout = () => {
         <div className="absolute left-0 top-0 h-[40%] w-full bg-gradient-to-b from-black to-transparent" />
         <div className="absolute bottom-0 left-0 h-[20%] w-full bg-gradient-to-t from-black to-transparent" />
       </div>
-      <div ref={containerBottomRef} className="flex flex-col border-rose-50  bg-black px-[5%] pb-[150px] md:h-auto md:flex-row h-[600px] lg:h-[895px]">
-        <div className="scrollbar flex w-full md:w-[30%] flex-row overflow-x-auto md:overflow-auto md:h-full md:flex-col">
-          {
-            data
-            .map((el:IData, idx:number) => {
-              const { name, drivetrain, frame, wheels } = el
-              return (
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0 },
-                    show: (i) => ({
-                      opacity: isInviewBottom ? 1 : 0,
-                      transition: { delay: 0.125 * i },
-                    }),
-                  }}
-                  initial="hidden"
-                  animate="show"
-                  custom={idx}
-                  className={clsx(
-                    "before:content-[' '] relative mt-2 flex flex-grow cursor-pointer text-white before:absolute before:bottom-0 before:block before:h-[2px] before:w-full md:before:static md:before:h-full md:before:w-[10px]",
-                    active == idx
-                      ? "text-black before:bg-green-200"
-                      : "text-stone-600 before:bg-stone-600"
-                  )}
-                  onClick={() => handleClickActive(idx)}
-                >
-                  <div className="flex w-full flex-col justify-center md:w-auto md:px-5">
-                    <div className="w-full text-center text-base md:w-auto md:text-left md:text-2xl">
-                      {name}
-                    </div>
-                    <div className="hidden md:block">
-                      Lorem ipsum dolor sit amet consectetur adipisicing nemo
-                      quis temporibus commodi.
-                    </div>
+      <div
+        ref={containerBottomRef}
+        className="flex h-[600px] flex-col  border-rose-50 bg-black px-[5%] pb-[150px] md:h-auto md:flex-row lg:h-[895px]"
+      >
+        <div className="scrollbar flex w-full flex-row overflow-x-auto md:h-full md:w-[30%] md:flex-col md:overflow-auto">
+          {data.map((el: IData, idx: number) => {
+            const { name, drivetrain, frame, wheels } = el;
+            return (
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0 },
+                  show: (i) => ({
+                    opacity: isInviewBottom ? 1 : 0,
+                    transition: { delay: 0.125 * i },
+                  }),
+                }}
+                initial="hidden"
+                animate="show"
+                custom={idx}
+                className={clsx(
+                  "before:content-[' '] relative mt-2 flex flex-grow cursor-pointer before:absolute before:bottom-0 before:block before:h-[2px] before:w-full md:before:static md:before:h-full md:before:w-[10px]",
+                  active == idx
+                    ? "text-white before:bg-green-200"
+                    : "text-stone-600 before:bg-stone-600"
+                )}
+                onClick={() => handleClickActive(idx)}
+              >
+                <div className="flex w-full flex-col justify-center md:w-auto md:px-5">
+                  <div className="w-full text-center text-base md:w-auto md:text-left md:text-2xl">
+                    {name}
                   </div>
-                </motion.div>
-              );
-            })}
+                  <div className="hidden md:block">
+                    Lorem ipsum dolor sit amet consectetur adipisicing nemo quis
+                    temporibus commodi.
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
         <div className="flex-grow lg:px-[5%]">
           <div className="flex h-full w-full flex-col lg:px-[10%]">
             <div className="my-auto h-2/3 w-full">
               {Object.keys(data[active])
-                .filter((el):el is TCateWithOutName => el != "name")
-                .map((el:TCateWithOutName , index:number, ell_all) => {
-                  const {detail, percent} = data[active][el]
+                .filter((el): el is TCateWithOutName => el != "name")
+                .map((el: TCateWithOutName, index: number, ell_all) => {
+                  const { detail, percent } = data[active][el];
                   return (
-                    <div
+                    <motion.div
                       className={clsx("relative grid h-1/3 w-full grid-cols-4")}
+                      variants={line_horizontal_animation}
+                      initial="hidden"
+                      animate="show"
                     >
                       <div className="absolute left-0 top-1/2 z-30 h-[90%] w-full -translate-y-1/2 border-y-2 ">
                         <motion.div
                           style={{
                             width: `${percent}%`,
                           }}
+                          variants={percent_animation}
+                          initial="hidden"
+                          animate="show"
+                          custom={index}
                           className={clsx(
                             "h-full bg-white transition-all",
                             percent === 100 ? `` : `rounded-r-full`
                           )}
                         ></motion.div>
                       </div>
-                      <div className="absolute left-0 top-1/2 z-30 flex h-[90%] w-full -translate-y-1/2 items-center bg-transparent px-5 text-white mix-blend-difference">
+                      <motion.div
+                        variants={percent_animation}
+                        initial="hidden"
+                        animate="show"
+                        custom={index}
+                        className="absolute left-0 top-1/2 z-30 flex h-[90%] w-full -translate-y-1/2 items-center bg-transparent px-5 text-white mix-blend-difference"
+                      >
                         <p className="mr-2 uppercase">{el} :</p>
                         <p>{detail}</p>
-                      </div>
+                      </motion.div>
                       {Array(4)
                         .fill(null)
                         .map((el, idx, ele) => {
                           return (
                             <motion.div
-                              variants={line_animation}
+                              variants={line_vertical_animation}
                               initial="hidden"
                               animate="show"
                               custom={idx}
                               className={clsx(
-                                "relative -top-[15%] h-[130%] w-full",
+                                "relative -top-[15%] h-[130%] w-full transition-all",
                                 idx == ele.length - 1
                                   ? `border-x-2`
                                   : `border-l-2`,
@@ -274,7 +302,7 @@ const SectionAbout = () => {
                             ></motion.div>
                           );
                         })}
-                    </div>
+                    </motion.div>
                   );
                 })}
             </div>
