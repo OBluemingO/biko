@@ -24,7 +24,7 @@ const SectionFaq = () => {
     <>
       <ImageTrackingCursor {...{ show, current }} />
       <div className="mt-[150px] px-[7.5%]">
-        <div className="mb-[30px] lg:mb-[100px] text-center text-faq-header  lg:text-8xl">
+        <div className="mb-[30px] text-center text-faq-header lg:mb-[100px]  lg:text-8xl">
           Most Common FAQ
         </div>
         <div
@@ -33,11 +33,11 @@ const SectionFaq = () => {
         >
           <motion.div
             onMouseOver={() => handleOnMouseOver(0)}
-            className="flex flex-col items-center justify-between border-t-[1px] py-8 transition-all lg:flex-row lg:hover:px-8"
+            className="flex cursor-pointer flex-col items-center justify-between border-t-[1px] py-8 transition-all lg:flex-row lg:hover:px-8"
           >
             <div className="flex flex-col items-center gap-5 lg:items-baseline">
               <LogoLine />
-              <p className="text-2xl font-bold lg:font-light text-center">
+              <p className="text-center text-2xl font-bold lg:font-light">
                 Lorem ipsum dolor sit amet
               </p>
             </div>
@@ -49,11 +49,11 @@ const SectionFaq = () => {
           </motion.div>
           <motion.div
             onMouseOver={() => handleOnMouseOver(1)}
-            className="flex flex-col items-center justify-between border-t-[1px] py-8 transition-all lg:flex-row lg:hover:px-8"
+            className="flex cursor-pointer  flex-col items-center justify-between border-t-[1px] py-8 transition-all lg:flex-row lg:hover:px-8"
           >
             <div className="flex flex-col items-center gap-5 lg:items-baseline">
               <Clip />
-              <p className="text-2xl font-bold lg:font-light text-center">
+              <p className="text-center text-2xl font-bold lg:font-light">
                 Lorem ipsum dolor sit amet
               </p>
             </div>
@@ -65,11 +65,11 @@ const SectionFaq = () => {
           </motion.div>
           <motion.div
             onMouseOver={() => handleOnMouseOver(2)}
-            className="flex flex-col items-center justify-between border-b-[1px] border-t-[1px] py-8 transition-all lg:flex-row lg:hover:px-8"
+            className="flex cursor-pointer  flex-col items-center justify-between border-b-[1px] border-t-[1px] py-8 transition-all lg:flex-row lg:hover:px-8"
           >
             <div className="flex flex-col items-center gap-5 lg:items-baseline">
               <Biko />
-              <p className="text-2xl font-bold lg:font-light text-center">
+              <p className="text-center text-2xl font-bold lg:font-light">
                 Lorem ipsum dolor sit amet
               </p>
             </div>

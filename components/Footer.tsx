@@ -12,7 +12,7 @@ const Footer = () => {
           <div className="w-[50px] h-[50px] lg:w-[75px] lg:h-[75px] bg-white rounded-full"></div>
           <div className="w-[50px] h-[50px] lg:w-[75px] lg:h-[75px] bg-white rounded-full"></div>
         </div>
-        <div className="text-white">
+        <div className="text-white text-center">
           © 2023. Copyright of  Phayuphat Trilao.
         </div>
       </div>

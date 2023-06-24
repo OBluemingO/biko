@@ -5,7 +5,7 @@ const SectionDetail = () => {
         <div className="header text-5xl">
           Lorem impsum dolor sit amet, consectetur
         </div>
-        <div className="body pt-5 md:pt-0">
+        <div className="body pt-5 md:pt-0 line-clamp-6">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor non
           culpa aliquam doloremque ullam error, enim ducimus dignissimos quis
           molestias animi repudiandae ea sint facere corporis quibusdam natus et
@@ -17,7 +17,7 @@ const SectionDetail = () => {
           <div className="mb-2">01.</div>
           <div className="text-5xl font-semibold">Seat</div>
         </div>
-        <div className="body ">
+        <div className="body line-clamp-6">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor non
           culpa aliquam doloremque ullam error, enim ducimus dignissimos quis
           molestias animi repudiandae ea sint facere corporis quibusdam natus et

@@ -1,7 +1,8 @@
+'use client'
 import ButtonGray from "@/components/buttons/button";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import clsx from "clsx";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 type TCategorie = "wheels" | "drivetrain" | "frame" | "name";
 type TCateWithOutName = Exclude<TCategorie ,"name" >
@@ -18,6 +19,20 @@ type IData = {
 
 const SectionAbout = () => {
   const [active, setActive] = useState<number>(0);
+  const containerRef = useRef<HTMLDivElement | null>(null)
+  const containerBottomRef = useRef<HTMLDivElement | null>(null)
+  const isInview = useInView(containerRef, { amount: 0.6, once:true });
+  const isInviewBottom = useInView(containerBottomRef, {
+    amount: 0.6,
+    once: true,
+  });
+
+  // useEffect(( ) => {
+  //   console.log('======= loglog',isInview )
+  // },[isInview])
+
+  
+
   // const [data, setData] = useState<IData[]>([
   //   {
   //     name: "test-1",
@@ -77,53 +92,124 @@ const SectionAbout = () => {
       setActive((prev) => (prev >= 3 ? 0 : prev + 1));
     }, 10000);
     return () => clearInterval(increase_active);
-  }, []);
+  }, [active]);
 
   const handleClickActive = (idx: number) => {
     setActive(idx);
   };
+
+  const start_duration = 0.6 
+  const line_animation = {
+    hidden: { height: `0%` },
+    show: (i: number) => ({
+      height: isInviewBottom ? `130%` : `0%`,
+      transition: { delay: start_duration + 0.3 },
+    }),
+  };
   
   return (
     <>
-      <div className="relative h-[1024px] w-full bg-biko-section bg-cover bg-[center_-1.5rem]">
+      <div
+        ref={containerRef}
+        className="relative h-[1024px] w-full bg-biko-section bg-cover bg-[center_-1.5rem]"
+      >
         <div className=" flex h-full flex-col items-center justify-center">
-          <h1 className="mb-[70px] text-header text-white">Testimonials</h1>
-          <p className="mb-[65px] w-[calc(100%-20vw)] text-center text-detailBody text-body lg:w-[613px]">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
-            repudiandae tenetur labore sapiente beatae maxime repellat commodi
-            error eligendi iste, dicta a! Ducimus ab recusandae repellendus est
-            quis, mollitia ad?
-          </p>
-          <div className="max-w-[338px]">
+          <span className="overflow-hidden">
+            <motion.h1
+              initial={{ y: "120px" }}
+              animate={{ y: isInview ? "0px" : "120px" }}
+              transition={{
+                delay: start_duration,
+                duration: 1,
+                ease: [0, 0.71, 0.2, 1.01],
+              }}
+              className="mb-[20px] overflow-hidden text-header leading-[1] text-white"
+            >
+              Testimonials
+            </motion.h1>
+          </span>
+          <motion.div
+            initial={{ scaleX: "0%" }}
+            animate={{ scaleX: isInview ? "100%" : "0%" }}
+            transition={{
+              duration: start_duration,
+              ease: [0, 0.71, 0.2, 1.01],
+            }}
+            className={"mb-[20px] h-[1px] w-2/4 lg:w-1/4 bg-white"}
+          ></motion.div>
+          <span className="overflow-hidden">
+            <motion.p
+              initial={{ y: "-140px" }}
+              animate={{ y: isInview ? "0px" : "-140px" }}
+              transition={{
+                delay: start_duration,
+                duration: 1,
+                ease: [0, 0.71, 0.2, 1.01],
+              }}
+              className="text-detailBody mx-auto mb-[65px] w-[calc(100%-20vw)] text-center text-body lg:w-[613px]"
+            >
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
+              repudiandae tenetur labore sapiente beatae maxime repellat commodi
+              error eligendi iste, dicta a! Ducimus ab recusandae repellendus
+              est quis, mollitia ad?
+            </motion.p>
+          </span>
+          <motion.div
+            initial={{ opacity: 0, y: "-120px" }}
+            animate={{
+              opacity: isInview ? 1 : 0,
+              y: isInview ? "0px" : "-120px",
+            }}
+            transition={{
+              delay: start_duration + 0.6,
+              duration: 1,
+              ease: [0, 0.71, 0.2, 1.01],
+            }}
+            className="max-w-[338px]"
+          >
             <ButtonGray>DISCOVER THE BENEFITS</ButtonGray>
-          </div>
+          </motion.div>
         </div>
 
         <div className="absolute left-0 top-0 h-[40%] w-full bg-gradient-to-b from-black to-transparent" />
         <div className="absolute bottom-0 left-0 h-[20%] w-full bg-gradient-to-t from-black to-transparent" />
       </div>
-      <div className="flex flex-col border-rose-50  bg-black px-[5%] pb-[150px] md:h-auto md:flex-row h-[600px] lg:h-[895px]">
-        <div className="flex w-full md:w-[30%] flex-row overflow-x-scroll lg:overflow-auto md:h-full md:flex-col">
+      <div ref={containerBottomRef} className="flex flex-col border-rose-50  bg-black px-[5%] pb-[150px] md:h-auto md:flex-row h-[600px] lg:h-[895px]">
+        <div className="scrollbar flex w-full md:w-[30%] flex-row overflow-x-auto md:overflow-auto md:h-full md:flex-col">
           {
             data
             .map((el:IData, idx:number) => {
               const { name, drivetrain, frame, wheels } = el
               return (
-                <div
+                <motion.div
+                  variants={{
+                    hidden: { opacity: 0 },
+                    show: (i) => ({
+                      opacity: isInviewBottom ? 1 : 0,
+                      transition: { delay: 0.125 * i },
+                    }),
+                  }}
+                  initial="hidden"
+                  animate="show"
+                  custom={idx}
                   className={clsx(
-                    "before:content-[' '] mt-2 flex flex-grow cursor-pointer text-white before:block before:h-full before:w-[10px]",
-                    active == idx ? "before:bg-green-200" : "before:bg-gray-200"
+                    "before:content-[' '] relative mt-2 flex flex-grow cursor-pointer text-white before:absolute before:bottom-0 before:block before:h-[2px] before:w-full md:before:static md:before:h-full md:before:w-[10px]",
+                    active == idx
+                      ? "text-black before:bg-green-200"
+                      : "text-stone-600 before:bg-stone-600"
                   )}
                   onClick={() => handleClickActive(idx)}
                 >
-                  <div className="flex flex-col justify-center px-5">
-                    <div className="text-2xl">{name}</div>
+                  <div className="flex w-full flex-col justify-center md:w-auto md:px-5">
+                    <div className="w-full text-center text-base md:w-auto md:text-left md:text-2xl">
+                      {name}
+                    </div>
                     <div className="hidden md:block">
                       Lorem ipsum dolor sit amet consectetur adipisicing nemo
                       quis temporibus commodi.
                     </div>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
         </div>
@@ -157,7 +243,11 @@ const SectionAbout = () => {
                         .fill(null)
                         .map((el, idx, ele) => {
                           return (
-                            <div
+                            <motion.div
+                              variants={line_animation}
+                              initial="hidden"
+                              animate="show"
+                              custom={idx}
                               className={clsx(
                                 "relative -top-[15%] h-[130%] w-full",
                                 idx == ele.length - 1
@@ -181,7 +271,7 @@ const SectionAbout = () => {
                                     idx == 3 && index === ell_all.length - 1,
                                 }
                               )}
-                            ></div>
+                            ></motion.div>
                           );
                         })}
                     </div>

@@ -2,7 +2,7 @@ import { TbWeight } from "react-icons/tb";
 const SectionImageDetail = () => {
   return (
     <div className="flex h-[87px] w-full  px-[2.5%]">
-      <div className="flex h-full flex-grow items-center justify-around border-r-[1px]">
+      <div className="flex h-full flex-grow items-center justify-around md:border-r-[1px]">
         <div className="">
           <div className="flex items-center justify-center gap-2">
             <TbWeight />
@@ -18,7 +18,7 @@ const SectionImageDetail = () => {
           <h2 className="text-4xl font-semibold">10 kg</h2>
         </div>
       </div>
-      <div className="flex h-full flex-grow  items-center justify-around border-r-[1px]">
+      <div className="hidden md:flex h-full flex-grow  items-center justify-around lg:border-r-[1px]">
         <div className="">
           <div className="flex items-center justify-center gap-2">
             <TbWeight />
