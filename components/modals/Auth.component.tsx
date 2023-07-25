@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import AuthInput from "../inputs/auth.input";
+import { loginAuth } from "../../apis";
 import { motion, AnimatePresence } from "framer-motion";
 import { useModalStore } from "@/stores/store";
 
@@ -10,8 +11,15 @@ const AuthModal = () => {
     const action_modal_auth = useModalStore((state) => state.action_modal_auth);
     const [loginMode, setLoginMode] = useState(true);
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        const user_login_info = new FormData(e.target as HTMLFormElement);
+        const form_data_into_object = Object.fromEntries(
+          user_login_info.entries()
+        );
+        const { data } = await loginAuth(form_data_into_object); 
+        console.log(data);
+
     };
 
     useEffect(() => {
@@ -85,7 +93,7 @@ const AuthModal = () => {
                   <form onSubmit={handleSubmit}>
                     <AuthInput
                       {...{
-                        name: "Email",
+                        name: "email",
                         type: "email",
                         place_holder: "example@gmail.com",
                       }}
@@ -93,7 +101,7 @@ const AuthModal = () => {
                     />
                     <AuthInput
                       {...{
-                        name: "Password",
+                        name: "password",
                         type: "password",
                         place_holder: "xxxxxxxxxx",
                       }}
@@ -142,7 +150,7 @@ const AuthModal = () => {
                       place_holder="johnny depp"
                     />
                     <AuthInput
-                      {...{ name: "Email", type: "email" }}
+                      {...{ name: "username", type: "email" }}
                       key="input-username"
                       place_holder="example@gmail.com"
                     />

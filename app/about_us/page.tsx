@@ -1,6 +1,6 @@
 "use client";
 import { PageWrapper } from "@/components/WraperPage";
-import { calcLength, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 
 interface IProps {}

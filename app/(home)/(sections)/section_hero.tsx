@@ -1,5 +1,6 @@
 "use client";
 import ButtonGray from "@/components/buttons/button";
+import { Axios } from "@/libs";
 import { motion } from "framer-motion";
 
 const SectionHero = () => {
@@ -39,6 +40,13 @@ const SectionHero = () => {
     `Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus saepe fugit quibusdam porro sit. Veniam ullam alias, blanditiis quo`.split(
       " "
     );
+
+  const handleClickButton = async() => {
+    const { data } = await Axios.get("/post/create", {
+      withCredentials: true,
+    });
+    console.log(data)
+  }
   return (
     <div className="relative h-screen w-full bg-hero-section bg-cover bg-[20%_0] px-[3%] md:bg-[center_-4rem]">
       <div className="relative z-10 flex h-full w-full flex-col justify-end pb-[70px]">
@@ -50,7 +58,11 @@ const SectionHero = () => {
         >
           {TextHeader.map((el, index) => {
             return (
-              <motion.span key={`text-header-pop-${index}`} variants={eachText} className="relative">
+              <motion.span
+                key={`text-header-pop-${index}`}
+                variants={eachText}
+                className="relative"
+              >
                 {el}
               </motion.span>
             );
@@ -60,18 +72,22 @@ const SectionHero = () => {
           variants={lineAnimation}
           initial={"hidden"}
           animate={"visible"}
-          className="line mb-[15px] mt-[10px] md:mb-[35px] md:mt-[25px] h-[1px] w-full bg-[#414141]"
+          className="line mb-[15px] mt-[10px] h-[1px] w-full bg-[#414141] md:mb-[35px] md:mt-[25px]"
         ></motion.div>
-        <div className="flex w-full flex-col items-left justify-between gap-5 md:flex-row md:gap-0">
+        <div className="items-left flex w-full flex-col justify-between gap-5 md:flex-row md:gap-0">
           <motion.div
             variants={groupText}
             initial={"hidden"}
             animate={"visible"}
-            className="flex w-3/4 md:w-1/2 flex-wrap justify-start md:justify-start overflow-hidden text-body"
+            className="flex w-3/4 flex-wrap justify-start overflow-hidden text-body md:w-1/2 md:justify-start"
           >
             {TextDetail.map((el, index) => {
               return (
-                <motion.span key={`text-detail-pop-${index}`} variants={eachBody} className="mr-[5px]">
+                <motion.span
+                  key={`text-detail-pop-${index}`}
+                  variants={eachBody}
+                  className="mr-[5px]"
+                >
                   {el}
                 </motion.span>
               );
@@ -82,10 +98,12 @@ const SectionHero = () => {
             animate={{ opacity: 1, x: 0, scale: 1 }}
             transition={{ delay: 0.5 }}
           >
-            <ButtonGray>DISCOVER THE BENEFITES</ButtonGray>
+            <ButtonGray cb={() => handleClickButton()}>
+              DISCOVER THE BENEFITES
+            </ButtonGray>
           </motion.div>
         </div>
-        <div className="absolute left-0 -z-[10] w-full bottom-0 h-[20%] bg-gradient-to-t from-black to-transparent" />
+        <div className="absolute bottom-0 left-0 -z-[10] h-[20%] w-full bg-gradient-to-t from-black to-transparent" />
       </div>
     </div>
   );

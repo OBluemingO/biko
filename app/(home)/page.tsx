@@ -15,25 +15,14 @@ import {
 } from "@/components/buttons/button.auth";
 import SectionImageDetail from "./(sections)/section_image_detail";
 import { useLayoutEffect } from "react";
-// import { PageWrapper } from "@/components/WraperPage";
-
-// ? NOTE: data fetch in server component
-// async function getData() {
-//   const { data } = await axios.get(
-//     "https://dummyapi.io/data/v1/comment?limit=",
-//     {
-//       headers: { "app-id": "6478c77f760dea7ba66aba29" },
-//     }
-//   );
-
-//   return data
-// }
+import { useSession } from "next-auth/react";
 
 export default function Home() {
   useLayoutEffect(() => {
     document.documentElement.scrollTo({top:0})
-  
   }, [])
+
+  const all = useSession();
 
   return (
       <motion.main
