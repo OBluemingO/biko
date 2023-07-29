@@ -26,32 +26,12 @@ const SectionAbout = () => {
     once: true,
   });
 
-  // const [data, setData] = useState<IData[]>([
-  //   {
-  //     name: "test-1",
-  //     drivetrain: { detail: "asdfsdf", percent: 50 },
-  //     wheels: { detail: "asdfsdf", percent: 20 },
-  //     frame: { detail: "asdfsdf", percent: 40 },
-  //   },
-  //   {
-  //     name: "test-2",
-  //     drivetrain: { detail: "asdfsdf", percent: 10 },
-  //     wheels: { detail: "asdfsdf", percent: 10 },
-  //     frame: { detail: "asdfsdf", percent: 100 },
-  //   },
-  //   {
-  //     name: "test-3",
-  //     drivetrain: { detail: "asdfsdf", percent: 10 },
-  //     wheels: { detail: "asdfsdf", percent: 10 },
-  //     frame: { detail: "asdfsdf", percent: 30 },
-  //   },
-  //   {
-  //     name: "test-4",
-  //     drivetrain: { detail: "asdfsdf", percent: 40 },
-  //     wheels: { detail: "asdfsdf", percent: 20 },
-  //     frame: { detail: "asdfsdf", percent: 90 },
-  //   },
-  // ]);
+  useEffect(() => {
+    const increase_active = setInterval(() => {
+      setActive((prev) => (prev >= 3 ? 0 : prev + 1));
+    }, 10000);
+    return () => clearInterval(increase_active);
+  }, [active]);
 
   const data: IData[] = [
     {
@@ -80,12 +60,7 @@ const SectionAbout = () => {
     },
   ];
 
-  useEffect(() => {
-    const increase_active = setInterval(() => {
-      setActive((prev) => (prev >= 3 ? 0 : prev + 1));
-    }, 10000);
-    return () => clearInterval(increase_active);
-  }, [active]);
+  
 
   const handleClickActive = (idx: number) => {
     setActive(idx);

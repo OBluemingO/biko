@@ -56,9 +56,7 @@ const Navbar = () => {
             variants={eachBody}
             className="relative after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-x-0 after:bg-white after:transition-all after:hover:scale-x-100"
           >
-            <Link className="cursor-pointer" href={"/about_us"}>
-              About us
-            </Link>
+            <Link className="cursor-pointer" href={"/products"}>Product</Link>
           </motion.span>
           <motion.span
             variants={eachBody}
