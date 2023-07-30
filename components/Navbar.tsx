@@ -42,9 +42,11 @@ const Navbar = () => {
           variants={fadeIn}
           initial="hidden"
           animate="visible"
-          className="hidden md:block"
+          className="hidden md:block relative after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-x-0 after:bg-white after:transition-all after:hover:scale-x-100"
         >
-          <Link href="">phayuphat118@gmail.com</Link>
+          <Link href="mailto:phayuphat118@gmail.com">
+            phayuphat118@gmail.com
+          </Link>
         </motion.span>
         <motion.div
           variants={group}
@@ -56,7 +58,9 @@ const Navbar = () => {
             variants={eachBody}
             className="relative after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-x-0 after:bg-white after:transition-all after:hover:scale-x-100"
           >
-            <Link className="cursor-pointer" href={"/products"}>Product</Link>
+            <Link className="cursor-pointer" href={"/products"}>
+              Product
+            </Link>
           </motion.span>
           <motion.span
             variants={eachBody}
@@ -82,13 +86,13 @@ const Navbar = () => {
           <RxHamburgerMenu />
         </div>
       </div>
-      <motion.div
+      <motion.span
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="absolute left-1/2 top-0 z-40 mt-[40px] w-full -translate-x-1/2 text-center text-4xl text-white"
+        className="absolute left-1/2 top-0 z-[60] mt-[40px] -translate-x-1/2 cursor-pointer text-center text-4xl text-white"
       >
-        Biko.
-      </motion.div>
+        <Link href={"/"}>Biko.</Link>
+      </motion.span>
     </>
   );
 };
