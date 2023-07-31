@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { motion } from "framer-motion";
-import { useModalStore } from "@/stores/store";
+import { useMenuBarStore, useModalStore } from "@/stores/store";
 
 const Navbar = () => {
   const fadeIn = {
@@ -34,6 +34,8 @@ const Navbar = () => {
   };
 
   const action_modal_auth = useModalStore((state) => state.action_modal_auth);
+  const action_menu_show = useMenuBarStore((state) => state.action_show_menu)
+  const is_show_menu = useMenuBarStore((state) => state.is_show_menu)
 
   return (
     <>
@@ -42,7 +44,7 @@ const Navbar = () => {
           variants={fadeIn}
           initial="hidden"
           animate="visible"
-          className="hidden md:block relative after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-x-0 after:bg-white after:transition-all after:hover:scale-x-100"
+          className="relative hidden after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-x-0 after:bg-white after:transition-all after:hover:scale-x-100 md:block"
         >
           <Link href="mailto:phayuphat118@gmail.com">
             phayuphat118@gmail.com
@@ -66,12 +68,6 @@ const Navbar = () => {
             variants={eachBody}
             className="relative after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-x-0 after:bg-white after:transition-all after:hover:scale-x-100"
           >
-            <Link href="/benefits">Benefits</Link>
-          </motion.span>
-          <motion.span
-            variants={eachBody}
-            className="relative after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-x-0 after:bg-white after:transition-all after:hover:scale-x-100"
-          >
             <Link href="/contact">Contact</Link>
           </motion.span>
           <motion.span
@@ -82,7 +78,10 @@ const Navbar = () => {
             <button>Login</button>
           </motion.span>
         </motion.div>
-        <div className="md:static lg:hidden">
+        <div
+          className="md:static lg:hidden"
+          onClick={() => action_menu_show(!is_show_menu)}
+        >
           <RxHamburgerMenu />
         </div>
       </div>

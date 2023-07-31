@@ -45,28 +45,34 @@ const AuthModal = () => {
         animate={{ top: modal_auth ? "0%" : "-100%" }}
         className="fixed z-[300] grid  h-full w-full place-items-center bg-[rgba(0,0,0,0.4)]"
       >
-        <motion.div className="flex  h-auto w-3/4 max-w-[792px] flex-col  overflow-hidden rounded-3xl bg-white lg:h-3/4  lg:max-h-[567px] lg:w-1/2 lg:flex-row">
-          <div className="h-1/4 w-full p-4 lg:h-full  lg:w-1/2">
+        <motion.div
+          className="flex w-3/4 h-auto flex-col overflow-hidden  rounded-3xl bg-white lg:h-3/4 lg:max-h-[567px] lg:min-h-[420px]  lg:w-[792px] lg:flex-row"
+        >
+          <div className="h-1/4 w-full p-4 lg:h-full lg:w-1/2">
             <div className="flex h-full w-full flex-col rounded-3xl bg-biko-d bg-cover text-white lg:justify-around ">
               <div className="pt-5 text-center lg:pt-0">
-                <div className="mx-auto hidden w-5/6 text-modal-auth-header font-semibold md:block lg:pt-20">
+                <div className="mx-auto w-5/6 font-semibold md:block md:text-modal-auth-header lg:pt-20 lg:text-3xl">
                   Lorem ipsum dolor sit amet.
                 </div>
-                <div className="mx-auto hidden w-5/6 pt-5 text-body md:block">
+                <div className="mx-auto block w-5/6 pb-4 pt-4 text-body md:pb-16 lg:pb-0 lg:pt-5">
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                   Quaerat
                 </div>
               </div>
               <div className="mx-auto hidden h-1/4 w-5/6 flex-col justify-around rounded-lg bg-slate-900 px-4 py-2 text-white lg:flex">
-                <div className="text-detail-body">
+                <div className="text-detail-body lg:text-sm">
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed
                   sapiente impedit cum.
                 </div>
                 <div className="flex gap-3">
                   <div className="h-[35px] w-[35px] rounded-full bg-white"></div>
                   <div>
-                    <h1 className="text-detail-body">Lorem, ipsum.</h1>
-                    <p className="text-detail-body">Lorem consectetur.</p>
+                    <h1 className="text-detail-body lg:text-sm">
+                      Lorem, ipsum.
+                    </h1>
+                    <p className="text-detail-body lg:text-sm">
+                      Lorem consectetur.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -82,11 +88,11 @@ const AuthModal = () => {
                   y: 50,
                   opacity: 0,
                 }}
-                className="h-3/4 w-full overflow-y-scroll p-4 lg:h-full lg:w-1/2  lg:overflow-y-hidden"
+                className="h-3/4 w-full overflow-y-scroll pb-4 pl-4 pr-4 lg:h-full lg:w-1/2 lg:overflow-y-hidden  lg:p-4"
               >
                 <div className="h-full w-full rounded-3xl  text-black">
                   <div className="mx-auto w-5/6 ">
-                    <h1 className="text-modal-auth-header font-bold uppercase">
+                    <h1 className="text-modal-auth-header font-bold uppercase lg:text-4xl">
                       Get started
                     </h1>
                   </div>
@@ -139,7 +145,7 @@ const AuthModal = () => {
               >
                 <div className="h-full w-full rounded-3xl  text-black">
                   <div className="mx-auto w-5/6 ">
-                    <h1 className="text-modal-auth-header font-bold uppercase">
+                    <h1 className="text-modal-auth-header font-bold uppercase lg:text-3xl">
                       Create Account
                     </h1>
                   </div>
