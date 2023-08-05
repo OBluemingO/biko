@@ -7,6 +7,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      minHeight: {
+        'mobile': 'max-h-[550px]',
+        'tablet': 'max-h-[1180px]',
+        'desktop': 'max-h-[798px]',
+      },
       fontSize:{
         header: 'clamp(1rem,10vw,6rem)',
         ['faq-header']: 'clamp(1rem,8vw,6rem)',

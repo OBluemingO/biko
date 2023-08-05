@@ -41,13 +41,11 @@ const AuthModal = () => {
     return (
       <motion.div
         ref={(el) => (modalRef.current = el)}
-        initial={{ top: "-100%" }}
-        animate={{ top: modal_auth ? "0%" : "-100%" }}
-        className="fixed z-[300] grid  h-full w-full place-items-center bg-[rgba(0,0,0,0.4)]"
+        initial={{ top: "-180vh" }}
+        animate={{ top: modal_auth ? "0vh" : "-180vh" }}
+        className="fixed grid z-[300] h-full w-full place-items-center bg-[rgba(0,0,0,0.4)]"
       >
-        <motion.div
-          className="flex w-3/4 h-auto flex-col overflow-hidden  rounded-3xl bg-white lg:h-3/4 lg:max-h-[567px] lg:min-h-[420px]  lg:w-[792px] lg:flex-row"
-        >
+        <motion.div className="flex h-auto w-3/4 flex-col overflow-hidden  rounded-3xl bg-white lg:h-3/4 lg:max-h-[567px] lg:min-h-[420px]  lg:w-[792px] lg:flex-row">
           <div className="h-1/4 w-full p-4 lg:h-full lg:w-1/2">
             <div className="flex h-full w-full flex-col rounded-3xl bg-biko-d bg-cover text-white lg:justify-around ">
               <div className="pt-5 text-center lg:pt-0">

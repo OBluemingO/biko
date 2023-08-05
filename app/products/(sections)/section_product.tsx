@@ -35,7 +35,7 @@ const SectionProduct = ({
   return (
     <div
       className={clsx(
-        "flex h-screen w-full rounded-t-3xl px-[3%]",
+        "flex h-screen min-h-[677px] md:min-h-[1180px] lg:min-h-[798px] w-full rounded-t-3xl px-[3%]",
         bgColor == "black" ? `bg-black` : `bg-white text-black`,
         idx == len - 1 ? `relative` : `sticky top-0`,
         direction == "left"

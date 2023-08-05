@@ -39,7 +39,7 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="absolute z-50 mx-auto flex w-full justify-between px-[3%] pt-[50px] text-xl text-body">
+      <div className="absolute mx-auto flex w-full justify-between px-[3%] pt-[50px] text-xl text-body">
         <motion.span
           variants={fadeIn}
           initial="hidden"
@@ -54,11 +54,11 @@ const Navbar = () => {
           variants={group}
           initial="hidden"
           animate="visible"
-          className="relative hidden gap-5 lg:flex "
+          className="relative hidden gap-5 lg:flex mix-blend-difference"
         >
           <motion.span
             variants={eachBody}
-            className="relative after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-x-0 after:bg-white after:transition-all after:hover:scale-x-100"
+            className="relative after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-x-0 after:bg-white after:transition-all after:hover:scale-x-100 "
           >
             <Link className="cursor-pointer" href={"/products"}>
               Product
@@ -73,7 +73,7 @@ const Navbar = () => {
           <motion.span
             variants={eachBody}
             onClick={() => action_modal_auth(true)}
-            className="relative after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-x-0 after:bg-white after:transition-all after:hover:scale-x-100"
+            className="relative after:absolute after:bottom-0 after:block after:h-[2px] after:w-full after:scale-x-0 after:bg-white after:transition-all after:hover:scale-x-100 "
           >
             <button>Login</button>
           </motion.span>
@@ -88,7 +88,7 @@ const Navbar = () => {
       <motion.span
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="absolute left-1/2 top-0 z-[60] mt-[40px] -translate-x-1/2 cursor-pointer text-center text-4xl text-white"
+        className="absolute left-1/2 top-0 z-[60] mt-[40px] -translate-x-1/2 cursor-pointer text-center text-4xl text-white mix-blend-difference"
       >
         <Link href={"/"}>Biko.</Link>
       </motion.span>

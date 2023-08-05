@@ -47,8 +47,9 @@ const SectionHero = () => {
     });
     console.log(data)
   }
+
   return (
-    <div className="relative h-screen w-full bg-hero-section bg-cover bg-[20%_0] px-[3%] md:bg-[center_-4rem]">
+    <div className="relative min-h-[550px] h-screen w-full bg-hero-section bg-cover bg-[20%_0] px-[3%] md:bg-[center_-4rem] -z-10">
       <div className="relative z-10 flex h-full w-full flex-col justify-end pb-[70px]">
         <motion.div
           variants={groupText}

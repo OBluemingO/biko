@@ -1,16 +1,19 @@
 import React from 'react'
+import clsx from 'clsx';
 
 const AuthInput = ({
   name = "null",
   type = "text",
   place_holder,
+  className = ''
 }: {
+  className ?: string;
   name: string;
   type: string;
   place_holder?: string;
 }) => {
   return (
-    <div className="mx-auto mt-4 w-5/6">
+    <div className={clsx(className != ''? className : "mx-auto mt-4 w-5/6")}>
       <label htmlFor={name}>
         <p className="mb-2 text-body">{name}</p>
         <input

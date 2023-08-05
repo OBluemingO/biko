@@ -14,7 +14,6 @@ import EachSelectMenu from "./eachSelectMenu";
 
 const MenuBar: React.FC = () => {
   const [show, setShow] = useState(false);
-  // const [showFooterBar, setShowFooterBar] = useState(false);
   const [currentHover, setCurrentHover] = useState(0);
   const modal_auth = useModalStore((state) => state.modal_auth);
   const showFooterBar = useMenuBarStore((state) => state.is_show_menu)
@@ -81,34 +80,8 @@ const MenuBar: React.FC = () => {
       >
         <div className="relative flex h-[80px] w-[calc(100vw-2.5%)] items-center overflow-hidden rounded-full border-2 border-white bg-[#141415] text-center text-menu-footer uppercase text-white transition-all lg:w-[calc(100vw-30%)]">
           {
-            Menu.map((item, idx) => <EachSelectMenu {...{idx, setCurrentHover, name:item }} />)
+            Menu.map((item, idx) => <EachSelectMenu key={`menu-bar-${idx}`} {...{idx, setCurrentHover, name:item }} />)
           }
-          {/* <EachSelectMenu /> */}
-          {/* <div
-            className="w-1/4 cursor-pointer"
-            onMouseOver={() => setCurrentHover(0)}
-          >
-            Home
-          </div>
-          <div
-            className="w-1/4 cursor-pointer border-l-[1px]"
-            onMouseOver={() => setCurrentHover(1)}
-          >
-            Product
-          </div>
-          <div
-            className="w-1/4 cursor-pointer border-l-[1px]"
-            onMouseOver={() => setCurrentHover(2)}
-          >
-            Contact
-          </div>
-          <div
-            className="w-1/4 cursor-pointer border-l-[1px]"
-            onMouseOver={() => setCurrentHover(3)}
-            onClick={() => action_modal_auth(true)}
-          >
-            Login
-          </div> */}
           <motion.div
             className="pointer-events-none absolute flex h-2/4  w-1/4 justify-center rounded-full"
             initial={{ left: "0%" }}

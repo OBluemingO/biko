@@ -172,6 +172,7 @@ const SectionAbout = () => {
             const { name, drivetrain, frame, wheels } = el;
             return (
               <motion.div
+                key={`section-about-first-${idx}`}
                 variants={{
                   hidden: { opacity: 0 },
                   show: (i) => ({
@@ -212,6 +213,7 @@ const SectionAbout = () => {
                   const { detail, percent } = data[active][el];
                   return (
                     <motion.div
+                      key={`section-about-second-${index}`}
                       className={clsx("relative grid h-1/3 w-full grid-cols-4")}
                       variants={line_horizontal_animation}
                       initial="hidden"
@@ -247,6 +249,7 @@ const SectionAbout = () => {
                         .map((el, idx, ele) => {
                           return (
                             <motion.div
+                              key={`section-about-third-${index}`}
                               variants={line_vertical_animation}
                               initial="hidden"
                               animate="show"
