@@ -44,7 +44,7 @@ const AuthModal = () => {
         ref={(el) => (modalRef.current = el)}
         initial={{ top: "-180vh" }}
         animate={{ top: modal_auth ? "0vh" : "-180vh" }}
-        className="fixed grid z-[300] h-full w-full place-items-center bg-[rgba(0,0,0,0.4)]"
+        className="fixed z-[300] grid h-full w-full place-items-center bg-[rgba(0,0,0,0.4)]"
       >
         <motion.div className="flex h-auto w-3/4 flex-col overflow-hidden  rounded-3xl bg-white lg:h-3/4 lg:max-h-[567px] lg:min-h-[420px]  lg:w-[792px] lg:flex-row">
           <div className="h-1/4 w-full p-4 lg:h-full lg:w-1/2">
@@ -98,7 +98,8 @@ const AuthModal = () => {
                   <form onSubmit={handleSubmit}>
                     <AuthInput
                       {...{
-                        name: "email",
+                        name: "Email",
+                        label: "email",
                         type: "email",
                         place_holder: "example@gmail.com",
                       }}
@@ -106,7 +107,8 @@ const AuthModal = () => {
                     />
                     <AuthInput
                       {...{
-                        name: "password",
+                        name: "Password",
+                        label: "password",
                         type: "password",
                         place_holder: "xxxxxxxxxx",
                       }}
@@ -150,18 +152,19 @@ const AuthModal = () => {
                   </div>
                   <form onSubmit={handleSubmit}>
                     <AuthInput
-                      {...{ name: "Full Name", type: "text" }}
+                      {...{ name: "FullName", label: "fullname", type: "text" }}
                       key="input-full-name"
                       place_holder="johnny depp"
                     />
                     <AuthInput
-                      {...{ name: "username", type: "email" }}
+                      {...{ name: "Email", label: "email", type: "email" }}
                       key="input-username"
                       place_holder="example@gmail.com"
                     />
                     <AuthInput
                       {...{
                         name: "Password",
+                        label: "password",
                         type: "password",
                       }}
                       key="input-password"

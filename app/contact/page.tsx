@@ -3,13 +3,33 @@ import { AnimatePresence, motion } from "framer-motion";
 import InputComponent from "@/components/inputs/input.global"
 import { useState } from "react";
 import ButtonGlobal from "@/components/buttons/button.global";
+import InputTextarea from "@/components/inputs/input.textarea";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { IContact } from "@/typs/ContactForm";
+
+
 
 export default function Page (){
+
+  const { handleSubmit:formHook,  formState: { errors }, watch, register } = useForm<IContact>()
   const [mapSelected, setMapSelected] = useState({
     id: "id-2",
     isSelect: false,
     text: "text-1",
   });
+  
+  const handleSubmit: SubmitHandler<IContact> = async(data) => {
+        console.log(data);
+        // e.preventDefault();
+        // const user_login_info = new FormData(e.target as HTMLFormElement);
+        // const form_data_into_object = Object.fromEntries(
+        //   user_login_info.entries()
+        // );
+        // console.log(form_data_into_object,'====== form data')
+        // const { data } = await loginAuth(form_data_into_object); 
+        // console.log(data);
+
+  }
 
   return (
     <div className="grid h-auto min-h-mobile w-full bg-black md:min-h-tablet lg:h-screen lg:min-h-desktop lg:grid-cols-2">
@@ -91,21 +111,27 @@ export default function Page (){
           <h1 className="mx-auto w-5/6 text-5xl font-semibold capitalize lg:w-full">
             get in touch
           </h1>
-          <form className="">
+          <form onSubmit={formHook(handleSubmit)}>
             <div className="flex flex-col lg:flex-row lg:gap-4 lg:pb-4">
               <InputComponent
                 {...{
                   name: "Firstname",
+                  label: "first_name",
                   type: "text",
                   place_holder: "Gail",
+                  required: true,
+                  register,
                 }}
                 key="input-firstname"
               />
               <InputComponent
                 {...{
+                  register,
                   name: "Lastname",
+                  label: "last_name",
                   type: "text",
                   place_holder: "Kertzmann",
+                  required: true,
                 }}
                 key="input-lastname"
               />
@@ -113,8 +139,10 @@ export default function Page (){
             <div className="flex flex-col lg:flex-row lg:gap-4 lg:pb-4">
               <InputComponent
                 {...{
+                  register,
                   className: "mx-auto mt-4 lg:mt-0 w-5/6",
                   name: "Email",
+                  label: "email",
                   type: "text",
                   place_holder: "biko_example@gmail.com",
                 }}
@@ -122,25 +150,54 @@ export default function Page (){
               />
               <InputComponent
                 {...{
+                  register,
                   className: "mx-auto mt-4 lg:mt-0 w-5/6",
                   name: "Company / Organization",
+                  label: "company",
                   type: "text",
                   place_holder: "Osinski - Hartmann",
                 }}
                 key="input-company"
               />
             </div>
-            <InputComponent
-              className={"mx-auto mt-4 w-5/6 lg:mt-0 lg:w-full"}
+            <div className="flex flex-col lg:flex-row lg:gap-4 lg:pb-4">
+              <InputComponent
+                {...{
+                  register,
+                  className: "mx-auto mt-4 lg:mt-0 w-5/6",
+                  name: "Phone",
+                  label: "phone_number",
+                  type: "tel",
+                  place_holder: "0-123-3456789",
+                }}
+                key="input-phone"
+              />
+              <InputComponent
+                {...{
+                  register,
+                  className: "mx-auto mt-4 lg:mt-0 w-5/6",
+                  name: "Country / Region",
+                  label: "country",
+                  type: "text",
+                  place_holder: "Heard Island and McDonald Islands",
+                }}
+                key="input-company"
+              />
+            </div>
+            <InputTextarea
+              className={"scrollbar mx-auto h-44 resize-none lg:w-full"}
               {...{
+                register,
                 name: "Message",
-                type: "text",
-                place_holder: "Gail",
+                label: "message",
+                place_holder:
+                  "Earum saepe officia sit sunt optio labore voluptates. Quaerat omnis et quisquam doloribus. Magnam in recusandae sunt neque et exercitationem est. Impedit voluptate ipsum et sunt quam.",
+                required: true,
               }}
               key="input-message"
             />
             <ButtonGlobal
-              className="mx-[8%] mt-6 p-0 w-5/6 lg:mx-0 lg:w-full "
+              className="mx-[8%] mt-6 w-5/6 p-0 lg:mx-0 lg:w-full "
               type="submit"
             >
               Send
