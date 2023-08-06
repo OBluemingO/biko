@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import AuthInput from "../inputs/auth.input";
+import AuthInput from "../inputs/input.global";
 import { loginAuth } from "../../apis";
 import { motion, AnimatePresence } from "framer-motion";
 import { useModalStore } from "@/stores/store";
@@ -30,6 +30,7 @@ const AuthModal = () => {
 
             if (e.target == modalRef.current) {
                 action_modal_auth(false);
+                setLoginMode(true)
             }
         };
         window.addEventListener("click", handleClickModal);
