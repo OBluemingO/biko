@@ -21,8 +21,8 @@ const SectionHero = () => {
   };
 
   const eachText = {
-    hidden: { top: "100%" },
-    visible: { top: "0%" },
+    hidden: { top: "100%", opacity: 0 },
+    visible: { top: "0%", opacity: 1 },
   };
 
   const eachBody = {
