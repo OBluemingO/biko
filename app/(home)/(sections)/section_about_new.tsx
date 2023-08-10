@@ -35,7 +35,22 @@ const animate_group_card = {
 
 const animate_items_text = {
     hidden: { y: "100%", opacity: 0 },
-    visible: { y: "0%", opacity: 1 },
+    visible: {
+        y: "0%",
+        opacity: 1,
+        transition: { duration: 0.6, ease: [0, 0.55, 0.45, 1] },
+    },
+};
+
+const animate_text_after_image = {
+    hidden: { y: "100%", opacity: 0, filter: `blur(5px)` },
+    visible: (idx: number) => ({
+        y: "0%",
+        opacity: 1,
+        filter: `blur(0px)`,
+        // transition: { delay: 1.2 * idx, duration: 0.6, ease: [0, 0.55, 0.45, 1] },
+        transition: { delay: 0.6 * idx, duration: 0.6, ease: [0, 0.55, 0.45, 1] },
+    }),
 };
 
 const animate_image = {
@@ -55,10 +70,12 @@ const animate_button = {
     hidden: {
         opacity:0,
         transform: "rotate(-90deg)",
+        filter: `blur(5px)`
     },
     visible: {
         opacity:1,
         transform: "rotate(0deg)",
+        filter: `blur(0px)`,
         transition: {
             delay: 0.5
         }
@@ -66,12 +83,12 @@ const animate_button = {
 };
 
 const text =
-    `Lorem ipsum dolor sit amet  consectetur \n adipisicing elit. Ea`.split(
+    `Lorem ipsum dolor sit amet consectetur \n adipisicing elit. Ea`.split(
         "\n"
     );
 
 const text_card =
-    `Lorem ipsum, dolor sit amet consectetur \n adipisicing elit. Veritatis, numquam  elit \n Veritatis, numquam.`.split(
+    `Lorem ipsum, dolor sit amet\n consectetur adipisicing elit. Veritatis,\n numquam  elit  Veritatis, numquam.`.split(
         "\n"
     );
 
@@ -88,15 +105,16 @@ const sectionAboutNew = () => {
     );
 
     return (
-        <div className="flex h-screen w-full flex-col bg-white">
-            <div className="flex h-1/2 w-full items-end justify-center bg-blue-800">
+        <div className="flex h-screen w-full flex-col bg-black">
+            <div className="flex h-1/2 w-full items-end justify-center ">
                 <motion.h1
                     style={{ transform: rotateX }}
                     ref={textTopicRef}
                     variants={animate_group_text}
                     initial="hidden"
-                    animate="visible"
-                    className="origin-center overflow-hidden whitespace-pre-line py-4 text-center text-8xl"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    className="origin-center overflow-hidden whitespace-pre-line py-4 text-center text-8xl text-white"
                 >
                     {text.map((el, idx) => {
                         return (
@@ -111,14 +129,15 @@ const sectionAboutNew = () => {
                     })}
                 </motion.h1>
             </div>
-            <div className="flex h-1/2 w-full bg-green-200 px-[3%]">
-                <div className="relative flex h-full basis-4/12 flex-col bg-purple-700">
-                    <div className="flex w-full flex-1 bg-black">
+            <div className="flex h-1/2 w-full px-[3%]">
+                <div className="relative flex h-full basis-4/12 flex-col ">
+                    <div className="flex w-full flex-1 ">
                         <motion.div
                             variants={animate_group_card}
                             initial="hidden"
-                            animate="visible"
-                            className="flex flex-1 flex-col gap-4 border-2 border-black bg-green-200"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            className="flex flex-1 flex-col p-4 gap-4 rounded-2xl text-white"
                         >
                             <motion.h1
                                 variants={animate_items_text}
@@ -140,34 +159,78 @@ const sectionAboutNew = () => {
                                 })}
                             </p>
                         </motion.div>
-                        <div className="flex flex-1 flex-col gap-1 bg-green-200">
+                        <div className="flex flex-1 flex-col gap-1 ">
                             <motion.span
                                 variants={animate_button}
                                 initial="hidden"
-                                animate="visible"
-                                className="flex w-fit flex-col border-2"
+                                // animate="visible"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                className="flex w-fit flex-col"
                             >
-                                <div className="h-[50px] w-[50px] rounded-full border-2 border-black"></div>
-                                <div className="h-[50px] w-[50px] rounded-full border-2 border-black"></div>
+                                <div className="h-[50px] w-[50px] rounded-full border-2 border-white"></div>
+                                <div className="h-[50px] w-[50px] rounded-full border-2 border-white"></div>
                             </motion.span>
                         </div>
                     </div>
                     <motion.div
                         variants={animate_image}
                         initial="hidden"
-                        animate="visible"
-                        className="h-[300px] w-full rounded-2xl bg-white"
+                        // animate="visible"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        className="h-[300px] w-[80%] mx-auto rounded-2xl bg-biko-a bg-cover origin-top"
                     ></motion.div>
                 </div>
-                <div className="relative h-full basis-8/12  bg-red-500">
+                <div className="relative h-full basis-8/12">
                     <motion.div
                         variants={animate_image}
                         initial="hidden"
-                        animate="visible"
-                        className="h-3/4 w-full rounded-2xl bg-black"
+                        // animate="visible"
+                        whileInView="visible"
+                        viewport={{ once: true }}
+                        className="h-3/4 w-full rounded-2xl bg-biko-d origin-top bg-cover"
                     ></motion.div>
-
-                    <ButtonToggle>click</ButtonToggle>
+                    <div className="flex justify-between mt-8">
+                        <div className="w-2/6 overflow-hidden">
+                            <motion.span
+                                variants={animate_text_after_image}
+                                initial="hidden"
+                                // animate="visible"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                className="inline-block text-white"
+                                custom={1}
+                            >
+                                Lorem ipsum dolor sit amet consectetur
+                                adipisicing elit. Earum, quibusdam!
+                            </motion.span>
+                        </div>
+                        <div className="flex  gap-3">
+                            <motion.span
+                                variants={animate_text_after_image}
+                                initial="hidden"
+                                // animate="visible"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                className="inline-block"
+                                custom={1.3}
+                            >
+                                <ButtonToggle>contact us</ButtonToggle>
+                            </motion.span>
+                            <motion.span
+                                variants={animate_text_after_image}
+                                initial="hidden"
+                                // animate="visible"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                className="inline-block"
+                                custom={1.6}
+                            >
+                                <ButtonToggle>free trial</ButtonToggle>
+                            </motion.span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

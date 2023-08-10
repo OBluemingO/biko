@@ -20,13 +20,23 @@ module.exports = {
         ['modal-auth-header']: 'clamp(0.7rem,2.5vw,2rem)',
         ['detail-body']: 'clamp(0.7rem,1vw,0.8rem)',
       },
+      transitionTimingFunction: {
+        'out-circ': 'cubic-bezier(0, 0.55, 0.45, 1);'
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       textColor: {
-        body: '#bbbbbb'
+        body: '#bbbbbb',
+        'gray-light': '#414141'
+      },
+      backgroundColor: {
+        'gray-little': '#212121'
+      },
+      borderColor: {
+        'gray-light': '#414141'
       },
       backgroundImage: {
         'hero-section': "url('../public/images/hero-section.png')",
