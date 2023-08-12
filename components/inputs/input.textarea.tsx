@@ -2,7 +2,7 @@
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 import { UseFormRegister } from 'react-hook-form'
-import { IContact } from "../../typs/ContactForm";
+import { IContact } from "../../typs/Form";
 
 interface ILabel extends Pick<IContact, 'message'>{
 }

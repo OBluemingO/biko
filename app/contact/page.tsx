@@ -5,20 +5,20 @@ import { useState } from "react";
 import ButtonGlobal from "@/components/buttons/button.global";
 import InputTextarea from "@/components/inputs/input.textarea";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { IContact } from "@/typs/ContactForm";
+import { TRegisterGroup } from "@/typs/Form";
 
 
 
 export default function Page (){
 
-  const { handleSubmit:formHook,  formState: { errors }, watch, register } = useForm<IContact>()
+  const { handleSubmit:formHook,  formState: { errors }, watch, register } = useForm<TRegisterGroup>()
   const [mapSelected, setMapSelected] = useState({
     id: "id-2",
     isSelect: false,
     text: "text-1",
   });
   
-  const handleSubmit: SubmitHandler<IContact> = async(data) => {
+  const handleSubmit: SubmitHandler<TRegisterGroup> = async(data) => {
         console.log(data);
         // e.preventDefault();
         // const user_login_info = new FormData(e.target as HTMLFormElement);
@@ -74,7 +74,7 @@ export default function Page (){
                   className: "mx-auto mt-4 lg:mt-0 w-5/6",
                   name: "Email",
                   label: "email",
-                  type: "text",
+                  type: "email",
                   place_holder: "biko_example@gmail.com",
                 }}
                 key="input-email"
