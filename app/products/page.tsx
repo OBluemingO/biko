@@ -1,5 +1,5 @@
+"use client"
 import SectionProduct from "./(sections)/section_product";
-
 interface IProps {}
 
 const AboutUs: React.FC<IProps> = ({}: IProps): JSX.Element => {

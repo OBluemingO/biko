@@ -12,9 +12,9 @@ import { useLayoutEffect } from "react";
 import { useSession } from "next-auth/react";
 
 export default function Home() {
-  useLayoutEffect(() => {
-    document.documentElement.scrollTo({ top: 0 });
-  }, []);
+  // useLayoutEffect(() => {
+  //   document.documentElement.scrollTo({ top: 0 });
+  // }, []);
 
   const all = useSession();
 
@@ -23,8 +23,8 @@ export default function Home() {
         className="w-full overflow-x-hidden"
       >
         <SectionHero />
-        <SectionAboutNew />
-        {/* <SectionAbout /> */}
+        {/* <SectionAboutNew /> */}
+        <SectionAbout />
         <SectionDetail />
         <SectionImage />
         <SectionFaq />

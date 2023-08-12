@@ -19,8 +19,9 @@ const ButtonToggle = ({ children }: Props) => {
                `
             )}
         >
-            <div className="absolute left-[2.5%] h-[90%] w-[40px] translate-x-0 rounded-full bg-white duration-500 ease-out-circ group-hover:left-[97.5%] group-hover:-translate-x-full grid place-items-center">
-                <GrCaretNext color='black' />
+            <div className="left-0 w-0 mix-blend-difference group-hover:w-full ease-out-circ duration-[800ms] bg-white absolute h-full"></div>
+            <div className="mix-blend-difference left-[5%] ease-out-circ duration-700 group-hover:left-[75%] w-[35px] h-[35px] bg-white rounded-full absolute grid place-items-center">
+                <GrCaretNext className="translate-x-[2px]" color='black' />
             </div>
             {children}
         </button>

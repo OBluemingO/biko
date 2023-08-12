@@ -3,6 +3,7 @@ import ButtonGray from "@/components/buttons/button";
 import clsx from "clsx";
 import { AiOutlineCheck } from "react-icons/ai";
 import { useRouter } from "next/navigation";
+import { motion } from 'framer-motion'
 
 interface Iprop {
   direction: string;
@@ -15,27 +16,61 @@ interface Iprop {
   bgColor: string
 }
 
+const start_animate = 1
+
+const group_text_animate = {
+  hidden: {
+    y: 0,
+  },
+  visible: {
+    y: 0,
+    transition: {
+      duration: start_animate,
+      ease: "easeOut",
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const line_animate = {
+  hidden: { width: "0%" },
+  visible: { width: "100%", transition: { duration: start_animate } },
+};
+
+const each_text_animate = {
+  hidden: { y: "110%" },
+  visible: {
+    y: "0%",
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
+
+
 const SectionProduct = ({
   direction = "left",
   desc,
   features,
   image,
-  title,
+  title: titles,
   idx,
   len,
-  bgColor
+  bgColor,
 }: Iprop) => {
+  // const router = useRouter();
 
-  const router = useRouter()
+  const title = titles.split("\n");
 
   const handleClick = () => {
-    router.push(`products/${title}`)
-  }
+    // router.push(`products/${title}`);
+  };
 
   return (
     <div
       className={clsx(
-        "flex h-screen min-h-[677px] md:min-h-[1180px] lg:min-h-[798px] w-full rounded-t-3xl px-[3%]",
+        "flex h-screen min-h-[677px] w-full rounded-t-3xl px-[3%] md:min-h-[1180px] lg:min-h-[798px]",
         bgColor == "black" ? `bg-black` : `bg-white text-black`,
         idx == len - 1 ? `relative` : `sticky top-0`,
         direction == "left"
@@ -49,20 +84,73 @@ const SectionProduct = ({
           direction == "left" ? `lg:pr-4` : `lg:pl-4`
         )}
       >
-        <div className="mb-5 whitespace-pre-line text-2xl md:text-6xl text-center lg:text-left">{title}</div>
-        <p className="mb-5 md:mb-10 opacity-50 text-center lg:text-left">{desc}</p>
+        <motion.div
+          variants={group_text_animate}
+          initial="hidden"
+          whileInView="visible"
+          className="mb-5 whitespace-pre-line text-center text-2xl md:text-6xl lg:text-left"
+        >
+          {title.map((el) => (
+            <motion.div className="overflow-hidden">
+              <motion.span
+                variants={each_text_animate}
+                className="inline-block "
+              >
+                {el}
+              </motion.span>
+            </motion.div>
+          ))}
+        </motion.div>
+        <p className="mb-5 text-center opacity-50 md:mb-10 lg:text-left">
+          {desc}
+        </p>
         <ul className="mb-10">
-          <div className={clsx("border-b-2 font-normal uppercase pb-3 mb-3", bgColor == 'black' ? `` : `border-black`)}>features</div>
+          <div
+            className={clsx(
+              "mb-2 overflow-hidden pb-2 font-normal uppercase",
+              bgColor == "black" ? `` : `border-black`
+            )}
+          >
+            <motion.span
+              variants={each_text_animate}
+              initial="hidden"
+              whileInView="visible"
+              className=" flex items-center gap-2 "
+            >
+              features
+            </motion.span>
+          </div>
+          <motion.div
+            variants={line_animate}
+            initial="hidden"
+            whileInView="visible"
+            className="h-[2px] w-full bg-[rgb(100,100,100)]"
+          ></motion.div>
           {features.map((el) => {
             return (
-              <li className="flex items-center gap-2 border-b-2 border-[rgb(25,25,25,0.6)] py-2 text-xl md:text-2xl capitalize">
-                <AiOutlineCheck color="green" />
-                {el}
-              </li>
+              <>
+                <li className="overflow-hidden py-2 text-xl capitalize md:text-2xl">
+                  <motion.span
+                    variants={each_text_animate}
+                    initial="hidden"
+                    whileInView="visible"
+                    className=" flex items-center gap-2"
+                  >
+                    <AiOutlineCheck color="green" />
+                    {el}
+                  </motion.span>
+                </li>
+                <motion.div
+                  variants={line_animate}
+                  initial="hidden"
+                  whileInView="visible"
+                  className="h-[2px] w-full bg-[rgb(100,100,100)]"
+                ></motion.div>
+              </>
             );
           })}
         </ul>
-        <div className="pb-5 lg:pb-0 lg:w-1/2">
+        <div className="pb-5 lg:w-1/2 lg:pb-0">
           <ButtonGray cb={() => handleClick()}>VIEW MORE</ButtonGray>
         </div>
       </div>

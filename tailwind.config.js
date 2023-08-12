@@ -45,6 +45,7 @@ module.exports = {
         'biko-b': "url('../public/images/biko_b.png')",
         'biko-c': "url('../public/images/biko_c.png')",
         'biko-d': "url('../public/images/biko_d.jpg')",
+        'get-in-touch': "url('../public/images/get_in_touch.jpg')",
       }
     },
   },

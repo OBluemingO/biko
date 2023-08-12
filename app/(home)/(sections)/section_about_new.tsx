@@ -83,12 +83,12 @@ const animate_button = {
 };
 
 const text =
-    `Lorem ipsum dolor sit amet consectetur \n adipisicing elit. Ea`.split(
+    `Lorem ipsum dolor sit amet \n consectetur adipisicing elit Ea.`.split(
         "\n"
     );
 
 const text_card =
-    `Lorem ipsum, dolor sit amet\n consectetur adipisicing elit. Veritatis,\n numquam  elit  Veritatis, numquam.`.split(
+    `Lorem ipsum, dolor sit amet Veritatis\n consectetur adipisicing Veritatis \n numquam  elit Veritatis`.split(
         "\n"
     );
 
@@ -105,135 +105,124 @@ const sectionAboutNew = () => {
     );
 
     return (
-        <div className="flex h-screen w-full flex-col bg-black">
-            <div className="flex h-1/2 w-full items-end justify-center ">
-                <motion.h1
-                    style={{ transform: rotateX }}
-                    ref={textTopicRef}
-                    variants={animate_group_text}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    className="origin-center overflow-hidden whitespace-pre-line py-4 text-center text-8xl text-white"
+      <div className="flex h-[1080px] w-full flex-col bg-black pt-5">
+        <div className="flex h-1/6 w-full items-center justify-center lg:h-2/6 ">
+          <motion.h1
+            style={{ transform: rotateX }}
+            ref={textTopicRef}
+            variants={animate_group_text}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="origin-center overflow-hidden whitespace-pre-line py-4 text-center text-4xl text-white lg:text-8xl"
+          >
+            {text.map((el, idx) => {
+              return (
+                <motion.span
+                  key={`text-section-about-${idx}-children relative`}
+                  variants={animate_items_text}
+                  className="inline-block"
                 >
-                    {text.map((el, idx) => {
-                        return (
-                            <motion.span
-                                key={`text-section-about-${idx}-children relative`}
-                                variants={animate_items_text}
-                                className="inline-block"
-                            >
-                                {el}
-                            </motion.span>
-                        );
-                    })}
-                </motion.h1>
-            </div>
-            <div className="flex h-1/2 w-full px-[3%]">
-                <div className="relative flex h-full basis-4/12 flex-col ">
-                    <div className="flex w-full flex-1 ">
-                        <motion.div
-                            variants={animate_group_card}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                            className="flex flex-1 flex-col p-4 gap-4 rounded-2xl text-white"
-                        >
-                            <motion.h1
-                                variants={animate_items_text}
-                                className="text-4xl"
-                            >
-                                Lorem, ipsum.
-                            </motion.h1>
-                            <p className="whitespace-pre-line">
-                                {text_card.map((el, idx) => {
-                                    return (
-                                        <motion.span
-                                            key={`section-text-card-about-${idx}`}
-                                            variants={animate_items_text}
-                                            className="inline-block"
-                                        >
-                                            {el}
-                                        </motion.span>
-                                    );
-                                })}
-                            </p>
-                        </motion.div>
-                        <div className="flex flex-1 flex-col gap-1 ">
-                            <motion.span
-                                variants={animate_button}
-                                initial="hidden"
-                                // animate="visible"
-                                whileInView="visible"
-                                viewport={{ once: true }}
-                                className="flex w-fit flex-col"
-                            >
-                                <div className="h-[50px] w-[50px] rounded-full border-2 border-white"></div>
-                                <div className="h-[50px] w-[50px] rounded-full border-2 border-white"></div>
-                            </motion.span>
-                        </div>
-                    </div>
-                    <motion.div
-                        variants={animate_image}
-                        initial="hidden"
-                        // animate="visible"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        className="h-[300px] w-[80%] mx-auto rounded-2xl bg-biko-a bg-cover origin-top"
-                    ></motion.div>
-                </div>
-                <div className="relative h-full basis-8/12">
-                    <motion.div
-                        variants={animate_image}
-                        initial="hidden"
-                        // animate="visible"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        className="h-3/4 w-full rounded-2xl bg-biko-d origin-top bg-cover"
-                    ></motion.div>
-                    <div className="flex justify-between mt-8">
-                        <div className="w-2/6 overflow-hidden">
-                            <motion.span
-                                variants={animate_text_after_image}
-                                initial="hidden"
-                                // animate="visible"
-                                whileInView="visible"
-                                viewport={{ once: true }}
-                                className="inline-block text-white"
-                                custom={1}
-                            >
-                                Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Earum, quibusdam!
-                            </motion.span>
-                        </div>
-                        <div className="flex  gap-3">
-                            <motion.span
-                                variants={animate_text_after_image}
-                                initial="hidden"
-                                // animate="visible"
-                                whileInView="visible"
-                                viewport={{ once: true }}
-                                className="inline-block"
-                                custom={1.3}
-                            >
-                                <ButtonToggle>contact us</ButtonToggle>
-                            </motion.span>
-                            <motion.span
-                                variants={animate_text_after_image}
-                                initial="hidden"
-                                // animate="visible"
-                                whileInView="visible"
-                                viewport={{ once: true }}
-                                className="inline-block"
-                                custom={1.6}
-                            >
-                                <ButtonToggle>free trial</ButtonToggle>
-                            </motion.span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                  {el}
+                </motion.span>
+              );
+            })}
+          </motion.h1>
         </div>
+        <div className="flex h-full w-full px-[3%] lg:h-4/6">
+          <div className="relative flex h-1/4 w-full flex-row items-center gap-10 lg:h-3/4 lg:basis-4/12 lg:flex-col">
+            <div className="flex flex-row-reverse justify-end gap-5 lg:gap-0 lg:flex-row lg:justify-end mr-5">
+              <motion.div
+                variants={animate_group_card}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="flex w-[75%] flex-col gap-4 rounded-2xl text-white lg:w-[60%]"
+              >
+                <motion.h1 variants={animate_items_text} className="text-4xl">
+                  Lorem ipsum.
+                </motion.h1>
+                <p className="whitespace-pre-line">
+                  {text_card.map((el, idx) => {
+                    return (
+                      <motion.span
+                        key={`section-text-card-about-${idx}`}
+                        variants={animate_items_text}
+                        className="inline-block"
+                      >
+                        {el}
+                      </motion.span>
+                    );
+                  })}
+                </p>
+              </motion.div>
+              <motion.span
+                variants={animate_button}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className="flex w-fit flex-col gap-2 mt-2 lg:mt-0"
+              >
+                <div className="h-[30px] w-[30px] rounded-full border-2 border-white lg:h-[50px] lg:w-[50px]"></div>
+                <div className="h-[30px] w-[30px] rounded-full border-2 border-white lg:h-[50px] lg:w-[50px]"></div>
+              </motion.span>
+            </div>
+            {/* <motion.div
+              variants={animate_image}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="h-[50%] w-[calc(60%+50px)] origin-center rounded-2xl bg-biko-c bg-cover"
+            ></motion.div> */}
+          </div>
+          <div className="relative h-full basis-8/12">
+            <motion.div
+              variants={animate_image}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="h-3/4 w-full origin-top rounded-2xl bg-biko-c bg-cover "
+            ></motion.div>
+            <div className="mt-10 flex justify-end">
+              {/* <div className="w-2/6 overflow-hidden">
+                <motion.span
+                  variants={animate_text_after_image}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="inline-block text-white"
+                  custom={1}
+                >
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Earum, quibusdam!
+                </motion.span>
+              </div> */}
+              <div className="flex  gap-3">
+                <motion.span
+                  variants={animate_text_after_image}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="inline-block"
+                  custom={1.3}
+                >
+                  <ButtonToggle>contact us</ButtonToggle>
+                </motion.span>
+                <motion.span
+                  variants={animate_text_after_image}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="inline-block"
+                  custom={1.6}
+                >
+                  <ButtonToggle>free trial</ButtonToggle>
+                </motion.span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     );
 };
 

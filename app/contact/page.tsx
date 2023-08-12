@@ -32,81 +32,12 @@ export default function Page (){
   }
 
   return (
-    <div className="grid h-auto min-h-mobile w-full bg-black md:min-h-tablet lg:h-screen lg:min-h-desktop lg:grid-cols-2">
-      <div className="h-[500px] w-full border-2 pt-[120px] lg:h-full lg:pt-0">
-        <motion.div className="relative h-full w-full bg-blue-500">
-          {/* <AnimatePresence mode="wait">
-            <motion.div
-              layoutId={mapSelected.id}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-              className="absolute left-0 top-0 h-full w-full opacity-0"
-            >
-              {mapSelected.isSelect ? `text-2` : `text-1`}
-            </motion.div>
-          </AnimatePresence>
-          <AnimatePresence mode="wait">
-            {mapSelected.isSelect ? (
-              <motion.div
-                className="absolute bg-white"
-                initial={{
-                  right: "0%",
-                  bottom: "0%",
-                  width: "100%",
-                  height: "100%",
-                }}
-                animate={{
-                  right: "10%",
-                  bottom: "10%",
-                  width: "25%",
-                  height: "25%",
-                }}
-                layoutId={mapSelected.id}
-                onClick={() =>
-                  setMapSelected((prev) => ({
-                    id: "id-2",
-                    isSelect: !prev.isSelect,
-                    text: !prev.isSelect ? "test-1" : "test-2",
-                  }))
-                }
-                key="test-key"
-              >
-                {mapSelected.text}
-              </motion.div>
-            ) : (
-              <motion.div
-                className="absolute bg-white"
-                initial={{
-                  right: "0%",
-                  bottom: "0%",
-                  width: "100%",
-                  height: "100%",
-                }}
-                animate={{
-                  right: "10%",
-                  bottom: "10%",
-                  width: "25%",
-                  height: "25%",
-                }}
-                onClick={() =>
-                  setMapSelected((prev) => ({
-                    id: "id-2",
-                    isSelect: !prev.isSelect,
-                    text: !prev.isSelect ? "test-1" : "test-2",
-                  }))
-                }
-                layoutId={mapSelected.id}
-                key="test-2-key"
-              >
-                {mapSelected.text}
-              </motion.div>
-            )}
-          </AnimatePresence> */}
+    <div className="grid h-auto overflow-hidden relative min-h-mobile w-full bg-black md:min-h-tablet lg:h-auto lg:min-h-desktop lg:grid-cols-2">
+      <div className="h-[500px] w-full pt-[120px] lg:h-full lg:pt-0">
+        <motion.div className="relative h-full w-full bg-get-in-touch bg-top ">
         </motion.div>
       </div>
-      <div className="relative flex h-full w-full items-center justify-center border-2 bg-white py-[5%] lg:py-0">
+      <div className="relative flex h-full w-full items-center justify-center border-2 bg-white py-[5%] lg:py-[7.5vw]">
         <div className="w-full lg:px-[5%]">
           <h1 className="mx-auto w-5/6 text-5xl font-semibold capitalize lg:w-full">
             get in touch
@@ -205,6 +136,7 @@ export default function Page (){
           </form>
         </div>
       </div>
+      <div className="w-full h-[50px] bg-black col-span-2"></div>
     </div>
   );
 }
