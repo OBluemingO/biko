@@ -2,18 +2,17 @@
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 import { UseFormRegister } from 'react-hook-form'
-import { IContact } from "../../typs/Form";
+import { TRegisterGroup, Tlabel } from "../../typs/Form";
 
-interface ILabel extends Pick<IContact, 'message'>{
-}
+type ILabel = Extract<Tlabel, 'message'>
 
 interface Props {
   name: string;
-  label: keyof ILabel;
+  label: ILabel;
   place_holder: string;
   className: string;
   required?: boolean;
-  register: UseFormRegister<IContact>;
+  register: UseFormRegister<TRegisterGroup>;
 }
 
 const InputTextarea: React.FC<Props> = ({

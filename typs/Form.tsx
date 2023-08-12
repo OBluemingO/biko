@@ -16,7 +16,7 @@ interface ILoginAndRegister {
   full_name?: string;
 }  
 
-type Tlabel = keyof IContact | keyof ILoginAndRegister 
+export type Tlabel = keyof IContact | keyof ILoginAndRegister 
 export type TRegisterGroup = IContact | ILoginAndRegister
 
 export interface Props {
