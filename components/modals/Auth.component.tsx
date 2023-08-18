@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useModalStore } from "@/stores/store";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { TRegisterGroup } from "@/typs/Form";
+import { signIn } from "next-auth/react";
 
 const AuthModal = () => {
     const { handleSubmit:formHook,  formState: { errors }, watch, register, reset } = useForm()
@@ -22,7 +23,8 @@ const AuthModal = () => {
       //   user_login_info.entries()
       // );
       // const { data } = await loginAuth(form_data_into_object);
-      console.log(data);
+      const result =  signIn("credentials", { username: "user@gmail.com", password: "123123123" })
+      console.log(result,'========= result')
     };
 
     useEffect(() => {

@@ -18,8 +18,9 @@ export const authOptions: NextAuthOptions = {
         password: { label: "password", type: "password" },
       },
       async authorize(credentials,req) {
+        // TODO: CALL API HERE AUTH
         console.log(credentials, "======== and ======", req);
-        const user = { id: "1", name: "Admin", email: "mock_1@gmail.com" };
+        const user = { id: "1", name: "Admin", email: "mock_1@gmail.com", image: "" };
         return user;
       },
     }),

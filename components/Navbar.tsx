@@ -3,6 +3,10 @@ import Link from "next/link";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { motion } from "framer-motion";
 import { useMenuBarStore, useModalStore } from "@/stores/store";
+import { usePathname } from 'next/navigation'
+import { getSession } from "next-auth/react";
+import clsx from "clsx";
+import { useEffect } from "react";
 
 const fadeIn = {
   hidden: { opacity: 0, x: -50 },
@@ -40,12 +44,25 @@ const GroupMenuComponent = ({
   route_name: string | boolean;
 }) => {
   const action_modal_auth = useModalStore((state) => state.action_modal_auth);
+  const pathName = usePathname()
+  const activePathName = route_name == pathName
+
+  useEffect(() => {
+    (async () => {
+      const data = await getSession()
+      console.log(data,'===== datatata')
+    })()
+  },[])
 
   if(typeof route_name === 'string'){
     return (
       <motion.span
         variants={eachBody}
-        className="relative after:absolute  after:bottom-0 after:block after:h-[2px] after:w-full after:scale-x-0 after:bg-white after:transition-all hover:text-body after:hover:scale-x-100 "
+        className={
+        clsx(activePathName ? `text-body hover:text-gray-500` : `text-gray-500 hover:text-body`,`relative after:absolute  after:bottom-0 after:block after:h-[2px]
+          after:w-full after:scale-x-0 after:bg-white after:transition-all 
+          after:hover:scale-x-100`
+        )}
       >
         <Link className="cursor-pointer" href={route_name}>
           {name}

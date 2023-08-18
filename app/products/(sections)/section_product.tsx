@@ -48,7 +48,6 @@ const each_text_animate = {
   },
 };
 
-
 const SectionProduct = ({
   direction = "left",
   desc,
