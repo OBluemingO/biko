@@ -16,8 +16,6 @@ export default function Home() {
   //   document.documentElement.scrollTo({ top: 0 });
   // }, []);
 
-  const all = useSession();
-
   return (
       <main
         className="w-full overflow-x-hidden"

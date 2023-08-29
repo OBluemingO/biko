@@ -3,28 +3,22 @@ import React, { useEffect, useRef, useState } from "react";
 import AuthInput from "../inputs/input.global";
 import { loginAuth } from "../../apis";
 import { motion, AnimatePresence } from "framer-motion";
-import { useModalStore } from "@/stores/store";
+import { useModalStore } from "../../stores/store";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { TRegisterGroup } from "@/typs/Form";
+import { TRegisterGroup } from "../../typs/Form";
 import { signIn } from "next-auth/react";
 
 const AuthModal = () => {
+  
     const { handleSubmit:formHook,  formState: { errors }, watch, register, reset } = useForm()
     const modal_auth = useModalStore((state) => state.modal_auth);
     const modalRef = useRef<HTMLDivElement | null>(null);
     const action_modal_auth = useModalStore((state) => state.action_modal_auth);
     const [loginMode, setLoginMode] = useState(true);
 
-    const handleSubmit: SubmitHandler<TRegisterGroup> = async (data) => {
-      console.log(data)
-      // e.preventDefault();
-      // const user_login_info = new FormData(e.target as HTMLFormElement);
-      // const form_data_into_object = Object.fromEntries(
-      //   user_login_info.entries()
-      // );
-      // const { data } = await loginAuth(form_data_into_object);
-      const result =  signIn("credentials", { username: "user@gmail.com", password: "123123123" })
-      console.log(result,'========= result')
+    const handleSubmit: SubmitHandler<TRegisterGroup> = async(data:TRegisterGroup) => {
+      if(!('password' in data)) return
+      await signIn("credentials", { username: data.email, password: data.password })
     };
 
     useEffect(() => {
@@ -110,7 +104,7 @@ const AuthModal = () => {
                       {...{
                         register,
                         name: "Email",
-                        label: "email",
+                        label:'email',
                         type: "email",
                         place_holder: "biko_example@gmail.com",
                       }}
@@ -124,7 +118,7 @@ const AuthModal = () => {
                         type: "password",
                         place_holder: "xxxxxxxxxx",
                       }}
-                      key="input-password"
+                      key="input-password-login"
                     />
                     <button
                       type="submit"
@@ -184,7 +178,7 @@ const AuthModal = () => {
                         place_holder: "biko_example@gmail.com",
                         required:true,
                       }}
-                      key="input-email-login"
+                      key="input-email-register"
                     />
                     <AuthInput
                       {...{
@@ -195,23 +189,8 @@ const AuthModal = () => {
                         place_holder: "xxxxxxxxxx",
                         required:true,
                       }}
-                      key="input-password"
+                      key="input-password-register"
                     />
-                    {/* <AuthInput
-                      {...{ name: "Email", label: "email", type: "email" }}
-                      key="input-username"
-                      place_holder="example@gmail.com"
-                    />
-                    <AuthInput
-                      {...{
-                        name: "Password",
-                        label: "password",
-                        type: "password",
-                      }}
-                      key="input-password"
-                      place_holder="xxxxxxxxxx"
-                    /> */}
-
                     <button
                       type="submit"
                       className="mx-auto mt-5 grid h-[50px] w-5/6 cursor-pointer select-none place-items-center rounded-[60px] border-[1px] border-[#414141]  bg-[#212121] text-center text-body "

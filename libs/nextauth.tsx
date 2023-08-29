@@ -1,8 +1,12 @@
+import { loginAuth } from "@/apis";
 import type { NextAuthOptions } from "next-auth";
 //? note:  credentialsProvider is out auth 
 import CredentialsProvider from "next-auth/providers/credentials";
+import { env } from 'process'
 
 export const authOptions: NextAuthOptions = {
+  // note: this secret key 
+  secret: env.NEXT_PUBLIC_JWT_SECRET,
   session: {
     strategy: "jwt",
   },
@@ -10,18 +14,23 @@ export const authOptions: NextAuthOptions = {
     CredentialsProvider({
       name: "Sign in",
       credentials: {
-        email: {
-          label: "email",
+        username: {
+          label: "username",
           type: "email",
           placeholder: "example@example.com",
         },
         password: { label: "password", type: "password" },
       },
-      async authorize(credentials,req) {
-        // TODO: CALL API HERE AUTH
-        console.log(credentials, "======== and ======", req);
-        const user = { id: "1", name: "Admin", email: "mock_1@gmail.com", image: "" };
-        return user;
+      async authorize(credentials, req) {
+        try {
+          const user_and_pass = { email: credentials?.username, password: credentials?.password }
+          const { data } = await loginAuth(user_and_pass)
+          const user = { id: data.id, name: data.name, email: data.email, image: "" };
+          return user;
+        }
+        catch (err) {
+          return null
+        }
       },
     }),
   ],

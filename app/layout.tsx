@@ -5,6 +5,7 @@ import MenuBar from "@/components/MenuBar";
 import AuthModal from "@/components/modals/Auth.component";
 import Footer from "@/components/Footer";
 import AuthProvider from "@/components/AuthProvider";
+import { SessionProvider } from "next-auth/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,13 +22,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-          <Navbar />
-          <MenuBar />
-          <AuthModal />
           <AuthProvider>
-            {children}
+            <Navbar />
+            <MenuBar />
+            <AuthModal />
+              {children}
+            <Footer />
           </AuthProvider>
-          <Footer />
       </body>
     </html>
   );

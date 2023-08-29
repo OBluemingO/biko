@@ -4,7 +4,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { motion } from "framer-motion";
 import { useMenuBarStore, useModalStore } from "@/stores/store";
 import { usePathname } from 'next/navigation'
-import { getSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import clsx from "clsx";
 import { useEffect } from "react";
 
@@ -46,13 +46,7 @@ const GroupMenuComponent = ({
   const action_modal_auth = useModalStore((state) => state.action_modal_auth);
   const pathName = usePathname()
   const activePathName = route_name == pathName
-
-  useEffect(() => {
-    (async () => {
-      const data = await getSession()
-      console.log(data,'===== datatata')
-    })()
-  },[])
+  const { data: user }  = useSession()
 
   if(typeof route_name === 'string'){
     return (
@@ -72,18 +66,29 @@ const GroupMenuComponent = ({
   }
 
   return (
-    <motion.span
-      variants={eachBody}
-      onClick={() => action_modal_auth(true)}
-      className="relative after:absolute  after:bottom-0 after:block after:h-[2px] after:w-full after:scale-x-0 after:bg-white after:transition-all hover:text-body after:hover:scale-x-100 "
-    >
-      <button>Login</button>
-    </motion.span>
+    <>
+    {
+        user?.user ?
+          <motion.span
+            variants={eachBody}
+            className="cursor-pointer relative after:absolute  after:bottom-0 after:block after:h-[2px] after:w-full after:scale-x-0 after:bg-white after:transition-all hover:text-body after:hover:scale-x-100 "
+          >
+            {user.user.name}
+          </motion.span>
+          :
+          <motion.span
+            variants={eachBody}
+            onClick={() => action_modal_auth(true)}
+            className="relative after:absolute  after:bottom-0 after:block after:h-[2px] after:w-full after:scale-x-0 after:bg-white after:transition-all hover:text-body after:hover:scale-x-100 "
+          >
+            <button>Login</button>
+          </motion.span>
+      }
+    </>
   );
 };
 
 const Navbar = () => {
-  const action_modal_auth = useModalStore((state) => state.action_modal_auth);
   const action_menu_show = useMenuBarStore((state) => state.action_show_menu);
   const is_show_menu = useMenuBarStore((state) => state.is_show_menu);
 

@@ -249,7 +249,7 @@ const SectionAbout = () => {
                         .map((el, idx, ele) => {
                           return (
                             <motion.div
-                              key={`section-about-third-${index}`}
+                              key={`section-about-third-${idx}`}
                               variants={line_vertical_animation}
                               initial="hidden"
                               animate="show"
