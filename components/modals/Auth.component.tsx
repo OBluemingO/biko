@@ -107,6 +107,9 @@ const AuthModal = () => {
                         label:'email',
                         type: "email",
                         place_holder: "biko_example@gmail.com",
+                        required: true,
+                        isError: (errors as any)?.email ? true : false,
+                        notMark: true
                       }}
                       key="input-email-login"
                     />
@@ -117,6 +120,9 @@ const AuthModal = () => {
                         label: "password",
                         type: "password",
                         place_holder: "xxxxxxxxxx",
+                        required: true,
+                        isError: (errors as any)?.password ? true : false,
+                        notMark: true
                       }}
                       key="input-password-login"
                     />
@@ -165,6 +171,7 @@ const AuthModal = () => {
                         type: "text",
                         place_holder: "mock mock",
                         required: true,
+                        isError: (errors as any)?.full_name ? true : false,
                       }}
                       key="input-full-name"
                       place_holder="johnny depp"
@@ -177,6 +184,7 @@ const AuthModal = () => {
                         type: "email",
                         place_holder: "biko_example@gmail.com",
                         required:true,
+                        isError: (errors as any)?.email ? true : false,
                       }}
                       key="input-email-register"
                     />
@@ -188,6 +196,7 @@ const AuthModal = () => {
                         type: "password",
                         place_holder: "xxxxxxxxxx",
                         required:true,
+                        isError: (errors as any)?.password ? true : false,
                       }}
                       key="input-password-register"
                     />

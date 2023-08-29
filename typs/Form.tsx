@@ -27,4 +27,6 @@ export interface Props {
   place_holder?: string;
   required?: boolean
   register: UseFormRegister<TRegisterGroup>;
+  isError?: boolean
+  notMark?: boolean
 }

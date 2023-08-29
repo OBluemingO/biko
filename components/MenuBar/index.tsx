@@ -1,4 +1,3 @@
-
 "use client";
 import {
   useMotionValueEvent,
@@ -11,9 +10,16 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { useMenuBarStore, useModalStore } from "@/stores/store";
 import { usePathname } from "next/navigation";
 import EachSelectMenu from "./eachSelectMenu";
+import { useSession } from "next-auth/react";
+
+
 
 const MenuBar: React.FC = () => {
+
+  const initValue = ["Home", "Products", "Contact", "Login"]
+
   const [show, setShow] = useState(false);
+  const [menuList, setMenuList] = useState<string[]>(initValue) 
   const [currentHover, setCurrentHover] = useState(0);
   const modal_auth = useModalStore((state) => state.modal_auth);
   const showFooterBar = useMenuBarStore((state) => state.is_show_menu)
@@ -51,7 +57,16 @@ const MenuBar: React.FC = () => {
     animate: { scale: [0, 0.5, 1], y: [0, 50, 0] },
   };
 
-  const Menu = ["Home", "Products", "Contact", "Login"];
+  const { status } = useSession()
+
+  useEffect(() => {
+    if(status == 'authenticated') setMenuList(prev => {
+      prev.pop()
+      return [...prev, 'Profile']
+    }) 
+    else setMenuList(initValue)
+  },[status])
+
 
   return (
     <>
@@ -80,7 +95,7 @@ const MenuBar: React.FC = () => {
       >
         <div className="relative flex h-[80px] w-[calc(100vw-2.5%)] items-center overflow-hidden rounded-full border-2 border-white bg-[#141415] text-center text-menu-footer uppercase text-white transition-all lg:w-[calc(100vw-30%)]">
           {
-            Menu.map((item, idx) => <EachSelectMenu key={`menu-bar-${idx}`} {...{idx, setCurrentHover, name:item }} />)
+            menuList.map((item, idx) => <EachSelectMenu key={`menu-bar-${idx}`} {...{idx, setCurrentHover, name:item }} />)
           }
           <motion.div
             className="pointer-events-none absolute flex h-2/4  w-1/4 justify-center rounded-full"

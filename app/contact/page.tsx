@@ -52,6 +52,7 @@ export default function Page (){
                   place_holder: "Gail",
                   required: true,
                   register,
+                  isError: (errors as any)?.first_name ? true : false,
                 }}
                 key="input-firstname"
               />
@@ -63,6 +64,7 @@ export default function Page (){
                   type: "text",
                   place_holder: "Kertzmann",
                   required: true,
+                  isError: (errors as any)?.last_name ? true : false,
                 }}
                 key="input-lastname"
               />
@@ -119,11 +121,13 @@ export default function Page (){
               className={"scrollbar mx-auto h-44 resize-none lg:w-full"}
               {...{
                 register,
+                type: "text",
                 name: "Message",
                 label: "message",
                 place_holder:
                   "Earum saepe officia sit sunt optio labore voluptates. Quaerat omnis et quisquam doloribus. Magnam in recusandae sunt neque et exercitationem est. Impedit voluptate ipsum et sunt quam.",
                 required: true,
+                isError: (errors as any)?.message ? true : false,
               }}
               key="input-message"
             />
