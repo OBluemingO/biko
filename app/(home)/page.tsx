@@ -8,13 +8,8 @@ import SectionImage from "./(sections)/section_image";
 import SectionFullImage  from "./(sections)/section_fullimage"
 import SectionAboutNew from './(sections)/section_about_new'
 import SectionImageDetail from "./(sections)/section_image_detail";
-import { useLayoutEffect } from "react";
-import { useSession } from "next-auth/react";
 
 export default function Home() {
-  // useLayoutEffect(() => {
-  //   document.documentElement.scrollTo({ top: 0 });
-  // }, []);
 
   return (
       <main

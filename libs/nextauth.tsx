@@ -28,10 +28,15 @@ export const authOptions: NextAuthOptions = {
           const user = { id: data.id, name: data.name, email: data.email, image: "" };
           return user;
         }
-        catch (err) {
+        catch (err: any) {
           return null
         }
       },
     }),
   ],
+  pages: {
+    // after login success go to home page
+    signIn: "/",
+    signOut: "/logout",
+  },
 };

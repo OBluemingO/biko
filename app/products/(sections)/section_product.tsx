@@ -4,13 +4,16 @@ import clsx from "clsx";
 import { AiOutlineCheck } from "react-icons/ai";
 import { useRouter } from "next/navigation";
 import { motion } from 'framer-motion'
+import Image from "next/image";
+import { StrictMode } from "react";
 
 interface Iprop {
   direction: string;
   title: string;
   desc: string;
   features: string[];
-  image: string;
+  // image: string;
+  image: any;
   idx: number;
   len: number;
   bgColor: string
@@ -89,8 +92,8 @@ const SectionProduct = ({
           whileInView="visible"
           className="mb-5 whitespace-pre-line text-center text-2xl md:text-6xl lg:text-left"
         >
-          {title.map((el) => (
-            <motion.div className="overflow-hidden">
+          {title.map((el, idx) => (
+            <motion.div className="overflow-hidden" key={`section-product-${idx}`}>
               <motion.span
                 variants={each_text_animate}
                 className="inline-block "
@@ -125,9 +128,9 @@ const SectionProduct = ({
             whileInView="visible"
             className="h-[2px] w-full bg-[rgb(100,100,100)]"
           ></motion.div>
-          {features.map((el) => {
+          {features.map((el, idx) => {
             return (
-              <>
+              <StrictMode key={`product-feature-${idx}`}>
                 <li className="overflow-hidden py-2 text-xl capitalize md:text-2xl">
                   <motion.span
                     variants={each_text_animate}
@@ -145,7 +148,7 @@ const SectionProduct = ({
                   whileInView="visible"
                   className="h-[2px] w-full bg-[rgb(100,100,100)]"
                 ></motion.div>
-              </>
+              </StrictMode>
             );
           })}
         </ul>
@@ -156,10 +159,18 @@ const SectionProduct = ({
       <div className="basis-3/5 pb-5 pt-3 md:pt-20">
         <div
           className={clsx(
-            " mx-auto h-full w-[90%] rounded-2xl",
+            " mx-auto h-full w-[90%] rounded-2xl overflow-hidden grid place-items-end relative",
             bgColor == "black" ? ` bg-white` : `bg-black`
           )}
-        ></div>
+        >
+          <Image
+            src={image}
+            alt={`image_product_bike_${titles}`}
+            objectPosition="center"
+            objectFit="contain"
+            fill
+          />
+        </div>
       </div>
     </div>
   );

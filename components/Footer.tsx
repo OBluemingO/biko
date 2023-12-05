@@ -5,7 +5,7 @@ const Footer = () => {
   const GroupLogo = [IoLogoDeviantart, IoLogoPwa, IoLogoDesignernews, IoLogoCodepen]
 
   return (
-    <div className="bg-black w-full px-[3%] mx-auto">
+    <div className="bg-black w-full pt-[3%] px-[3%] mx-auto">
       <div className="w-[50px] h-[50px] lg:w-[75px] lg:h-[75px] mx-auto bg-white rounded-full grid place-items-center">
         <IoLogoXing className='w-[90%] h-[90%]' />
       </div>
@@ -23,9 +23,6 @@ const Footer = () => {
               )
             })
           }
-          {/* <div className="w-[50px] h-[50px] lg:w-[75px] lg:h-[75px] bg-white rounded-full"></div>
-          <div className="w-[50px] h-[50px] lg:w-[75px] lg:h-[75px] bg-white rounded-full"></div>
-          <div className="w-[50px] h-[50px] lg:w-[75px] lg:h-[75px] bg-white rounded-full"></div> */}
         </div>
         <div className="text-white text-center">
           © 2023. Copyright of  Phayuphat Trilao.

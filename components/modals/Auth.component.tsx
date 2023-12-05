@@ -17,8 +17,18 @@ const AuthModal = () => {
     const [loginMode, setLoginMode] = useState(true);
 
     const handleSubmit: SubmitHandler<TRegisterGroup> = async(data:TRegisterGroup) => {
-      if(!('password' in data)) return
-      await signIn("credentials", { username: data.email, password: data.password })
+      try{
+        if(!('password' in data)) return
+        const result: any = await signIn("credentials", {
+          username: data.email,
+          password: data.password,
+          redirect: false,
+        });
+        if(!result?.ok) throw 'login failed please try again !!!'
+      } catch(err) {
+        console.log(err)
+      }
+      
     };
 
     useEffect(() => {
@@ -45,19 +55,19 @@ const AuthModal = () => {
 
     return (
       <motion.div
-        ref={(el) => (modalRef.current = el)}
+        ref={(el: any) => (modalRef.current = el)}
         initial={{ top: "-180vh" }}
         animate={{ top: modal_auth ? "0vh" : "-180vh" }}
         className="fixed z-[300] grid h-full w-full place-items-center bg-[rgba(0,0,0,0.4)]"
       >
         <motion.div className="flex h-auto w-3/4 flex-col overflow-hidden  rounded-3xl bg-white lg:h-3/4 lg:max-h-[567px] lg:min-h-[420px]  lg:w-[792px] lg:flex-row">
           <div className="h-1/4 w-full p-4 lg:h-full lg:w-1/2">
-            <div className="flex h-full w-full flex-col rounded-3xl bg-biko-d bg-cover text-white lg:justify-around ">
+            <div className="bg-biko-d flex h-full w-full flex-col rounded-3xl bg-cover text-white lg:justify-around ">
               <div className="pt-5 text-center lg:pt-0">
-                <div className="mx-auto w-5/6 font-semibold md:block md:text-modal-auth-header lg:pt-20 lg:text-3xl">
+                <div className="md:text-modal-auth-header mx-auto w-5/6 font-semibold md:block lg:pt-20 lg:text-3xl">
                   Lorem ipsum dolor sit amet.
                 </div>
-                <div className="mx-auto block w-5/6 pb-4 pt-4 text-body md:pb-16 lg:pb-0 lg:pt-5">
+                <div className="text-body mx-auto block w-5/6 pb-4 pt-4 md:pb-16 lg:pb-0 lg:pt-5">
                   Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                   Quaerat
                 </div>
@@ -104,12 +114,12 @@ const AuthModal = () => {
                       {...{
                         register,
                         name: "Email",
-                        label:'email',
+                        label: "email",
                         type: "email",
                         place_holder: "biko_example@gmail.com",
                         required: true,
                         isError: (errors as any)?.email ? true : false,
-                        notMark: true
+                        notMark: true,
                       }}
                       key="input-email-login"
                     />
@@ -122,13 +132,13 @@ const AuthModal = () => {
                         place_holder: "xxxxxxxxxx",
                         required: true,
                         isError: (errors as any)?.password ? true : false,
-                        notMark: true
+                        notMark: true,
                       }}
                       key="input-password-login"
                     />
                     <button
                       type="submit"
-                      className="mx-auto mt-5 grid h-[50px] w-5/6 cursor-pointer select-none place-items-center rounded-[60px] border-[1px] border-[#414141]  bg-[#212121] text-center text-body "
+                      className="text-body mx-auto mt-5 grid h-[50px] w-5/6 cursor-pointer select-none place-items-center rounded-[60px] border-[1px]  border-[#414141] bg-[#212121] text-center "
                     >
                       Login
                     </button>
@@ -183,7 +193,7 @@ const AuthModal = () => {
                         label: "email",
                         type: "email",
                         place_holder: "biko_example@gmail.com",
-                        required:true,
+                        required: true,
                         isError: (errors as any)?.email ? true : false,
                       }}
                       key="input-email-register"
@@ -195,14 +205,14 @@ const AuthModal = () => {
                         label: "password",
                         type: "password",
                         place_holder: "xxxxxxxxxx",
-                        required:true,
+                        required: true,
                         isError: (errors as any)?.password ? true : false,
                       }}
                       key="input-password-register"
                     />
                     <button
                       type="submit"
-                      className="mx-auto mt-5 grid h-[50px] w-5/6 cursor-pointer select-none place-items-center rounded-[60px] border-[1px] border-[#414141]  bg-[#212121] text-center text-body "
+                      className="text-body mx-auto mt-5 grid h-[50px] w-5/6 cursor-pointer select-none place-items-center rounded-[60px] border-[1px]  border-[#414141] bg-[#212121] text-center "
                     >
                       Register
                     </button>

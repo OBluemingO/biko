@@ -3,7 +3,7 @@ import {
   useMotionValueEvent,
   useScroll,
   motion,
-} from "framer-motion";
+} from 'framer-motion'
 import clsx from "clsx";
 import { useState, useEffect, useLayoutEffect } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";

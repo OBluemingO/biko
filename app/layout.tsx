@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import MenuBar from "@/components/MenuBar";
 import AuthModal from "@/components/modals/Auth.component";
@@ -7,7 +7,7 @@ import Footer from "@/components/Footer";
 import AuthProvider from "@/components/AuthProvider";
 import { SessionProvider } from "next-auth/react";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "biko",
@@ -21,12 +21,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      {/* <body className={inter.className}> */}
+      <body>
           <AuthProvider>
             <Navbar />
             <MenuBar />
             <AuthModal />
-              {children}
+            {children}
             <Footer />
           </AuthProvider>
       </body>

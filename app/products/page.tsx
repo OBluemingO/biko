@@ -1,5 +1,10 @@
 "use client"
 import SectionProduct from "./(sections)/section_product";
+import ImageProuctFirst from '../../public/images/bike-with-bg-black-1.png'
+import ImageProuctSeconde from '../../public/images/bike-with-bg-white-1.png'
+import ImageProuctThrid from '../../public/images/bike-with-bg-white-2.png'
+import Image from "next/image";
+import ImageSectionTop from "../../public/images/product-section-top.jpg";
 interface IProps {}
 
 const AboutUs: React.FC<IProps> = ({}: IProps): JSX.Element => {
@@ -8,7 +13,7 @@ const AboutUs: React.FC<IProps> = ({}: IProps): JSX.Element => {
     {
       title: "More of what \n you do  want.",
       desc: "Less of what you don’t.",
-      image: "mock",
+      image: ImageProuctFirst,
       features: [
         "Ergonomic Steel Table",
         "Gorgeous Plastic Towels",
@@ -21,7 +26,7 @@ const AboutUs: React.FC<IProps> = ({}: IProps): JSX.Element => {
     {
       title: "More of what \n you do  want.",
       desc: "Less of what you don’t.",
-      image: "mock",
+      image: ImageProuctSeconde,
       features: [
         "Ergonomic Steel Table",
         "Gorgeous Plastic Towels",
@@ -34,7 +39,7 @@ const AboutUs: React.FC<IProps> = ({}: IProps): JSX.Element => {
     {
       title: "More of what \n you do  want.",
       desc: "Less of what you don’t.",
-      image: "mock",
+      image: ImageProuctThrid,
       features: [
         "Ergonomic Steel Table",
         "Gorgeous Plastic Towels",
@@ -47,9 +52,15 @@ const AboutUs: React.FC<IProps> = ({}: IProps): JSX.Element => {
   ];
 
   return (
-    <main className="w-full bg-black text-white">
-      <div className="flex h-screen w-full items-end justify-center">
-        <h1 className="mb-20 text-center text-3xl md:text-7xl">
+    <main className="w-full bg-white text-white">
+      <div className="relative flex h-screen w-full items-end justify-end">
+        <Image 
+          src={ImageSectionTop} 
+          alt="bike-mock" 
+          objectFit="contain"
+          fill 
+        />
+        <h1 className="relative z-[5] mb-10 mr-20 rounded-xl bg-black/50 p-4 text-center text-3xl backdrop-blur-sm md:text-7xl">
           Lorem ipsum <br />
           dolor sit.
         </h1>

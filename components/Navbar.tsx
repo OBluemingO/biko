@@ -1,12 +1,12 @@
 "use client";
-import Link from "next/link";
-import { RxHamburgerMenu } from "react-icons/rx";
-import { motion } from "framer-motion";
+import Link from 'next/link'
+import { RxHamburgerMenu } from 'react-icons/rx'
+import { motion } from 'framer-motion'
 import { useMenuBarStore, useModalStore } from "@/stores/store";
-import { usePathname } from 'next/navigation'
-import { useSession } from "next-auth/react";
+import { usePathname, useRouter } from 'next/navigation'
+import { signOut, useSession } from "next-auth/react";
 import clsx from "clsx";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const fadeIn = {
   hidden: { opacity: 0, x: -50 },
@@ -47,6 +47,7 @@ const GroupMenuComponent = ({
   const pathName = usePathname()
   const activePathName = route_name == pathName
   const { data: user }  = useSession()
+  const route = useRouter()
 
   if(typeof route_name === 'string'){
     return (
@@ -65,12 +66,17 @@ const GroupMenuComponent = ({
     );
   }
 
+  const handleOnClick = () => {
+    signOut()
+  }
+
   return (
     <>
     {
         user?.user ?
           <motion.span
             variants={eachBody}
+            onClick={handleOnClick}
             className="cursor-pointer relative after:absolute  after:bottom-0 after:block after:h-[2px] after:w-full after:scale-x-0 after:bg-white after:transition-all hover:text-body after:hover:scale-x-100 "
           >
             {user.user.name}
@@ -89,8 +95,15 @@ const GroupMenuComponent = ({
 };
 
 const Navbar = () => {
+  const [loading, setLoading] = useState(true)
+
   const action_menu_show = useMenuBarStore((state) => state.action_show_menu);
   const is_show_menu = useMenuBarStore((state) => state.is_show_menu);
+  const { data: user }  = useSession()
+
+  // useEffect(() => {
+  //   if(user) setLoading(false)
+  // },[user])
 
   const group_of_route = [
     {name:'Product', route_name: '/products'},
@@ -98,9 +111,11 @@ const Navbar = () => {
     {name:'Login', route_name: false},
   ]
 
+  // if(loading) return <></>
+
   return (
     <>
-      <div className="absolute z-50 mx-auto flex w-full justify-between px-[3%] pt-[50px] text-xl text-gray-500 ">
+      <div className="absolute z-50 mx-auto flex w-full justify-between px-[3%] pt-[50px] text-xl text-gray-500 nav-bar ">
         <motion.span
           variants={fadeIn}
           initial="hidden"

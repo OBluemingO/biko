@@ -12,11 +12,6 @@ import { TRegisterGroup } from "@/typs/Form";
 export default function Page (){
 
   const { handleSubmit:formHook,  formState: { errors }, watch, register } = useForm<TRegisterGroup>()
-  const [mapSelected, setMapSelected] = useState({
-    id: "id-2",
-    isSelect: false,
-    text: "text-1",
-  });
   
   const handleSubmit: SubmitHandler<TRegisterGroup> = async(data) => {
         console.log(data);
@@ -32,7 +27,7 @@ export default function Page (){
   }
 
   return (
-    <div className="grid h-auto overflow-hidden relative min-h-mobile w-full bg-black md:min-h-tablet lg:h-auto lg:min-h-desktop lg:grid-cols-2">
+    <div className="grid h-auto overflow-hidden relative min-h-mobile w-full bg-black md:min-h-tablet lg:h-screen lg:min-h-desktop lg:grid-cols-2">
       <div className="h-[500px] w-full pt-[120px] lg:h-full lg:pt-0">
         <motion.div className="relative h-full w-full bg-get-in-touch bg-top ">
         </motion.div>
@@ -140,7 +135,7 @@ export default function Page (){
           </form>
         </div>
       </div>
-      <div className="w-full h-[50px] bg-black col-span-2"></div>
+      {/* <div className="w-full h-[50px] bg-black col-span-2"></div> */}
     </div>
   );
 }
